@@ -1,0 +1,202 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0124 12:45:50.061188 139884543317888 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+I0124 12:45:53.365327 139884543317888 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-01-24 12:45:53.379375: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0124 12:45:53.379668 139884543317888 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0124 12:45:53.380504 139884543317888 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0124 12:45:53.380865 139884543317888 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+I0124 12:46:28.664909 139884543317888 run.py:186] Compiled feedback step in 35.303825 s.
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (64, 20, 64)
+nxt_hidden shape >>  (64, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+I0124 12:46:35.248492 139884543317888 run.py:199] (train) step 0: {'average_accuracy': 0.49899135280569096, 'average_shift': 5.453125}
+I0124 12:46:39.973035 139884543317888 run.py:206] (val) step 0: {'average_accuracy': 0.5714649522626496, 'average_shift': 4.40625}
+I0124 12:46:39.973255 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:46:39.978365 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 12:46:58.312232 139884543317888 run.py:199] (train) step 10: {'average_accuracy': 0.486826374452753, 'average_shift': 5.0625}
+I0124 12:46:58.364598 139884543317888 run.py:206] (val) step 10: {'average_accuracy': 0.5625386355238328, 'average_shift': 3.125}
+I0124 12:46:58.365079 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 12:47:16.238723 139884543317888 run.py:199] (train) step 20: {'average_accuracy': 0.5282728564220437, 'average_shift': 4.953125}
+I0124 12:47:16.281860 139884543317888 run.py:206] (val) step 20: {'average_accuracy': 0.5962913411515385, 'average_shift': 4.25}
+I0124 12:47:16.282252 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:47:34.100159 139884543317888 run.py:199] (train) step 30: {'average_accuracy': 0.4880748961516425, 'average_shift': 3.484375}
+I0124 12:47:34.144485 139884543317888 run.py:206] (val) step 30: {'average_accuracy': 0.5276017841807314, 'average_shift': 2.09375}
+I0124 12:47:34.144717 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 12:47:51.832846 139884543317888 run.py:199] (train) step 40: {'average_accuracy': 0.4833026310393039, 'average_shift': 5.984375}
+I0124 12:47:51.878697 139884543317888 run.py:206] (val) step 40: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:48:09.797429 139884543317888 run.py:199] (train) step 50: {'average_accuracy': 0.5360734719813424, 'average_shift': 5.53125}
+I0124 12:48:09.842271 139884543317888 run.py:206] (val) step 50: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 12:48:09.842493 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:48:27.785031 139884543317888 run.py:199] (train) step 60: {'average_accuracy': 0.5229972831686501, 'average_shift': 5.296875}
+I0124 12:48:27.828427 139884543317888 run.py:206] (val) step 60: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:48:45.814862 139884543317888 run.py:199] (train) step 70: {'average_accuracy': 0.5163501739891301, 'average_shift': 4.734375}
+I0124 12:48:45.859836 139884543317888 run.py:206] (val) step 70: {'average_accuracy': 0.5849818173420146, 'average_shift': 3.625}
+I0124 12:49:03.866650 139884543317888 run.py:199] (train) step 80: {'average_accuracy': 0.5880985316659175, 'average_shift': 2.9375}
+I0124 12:49:03.917410 139884543317888 run.py:206] (val) step 80: {'average_accuracy': 0.5849304044822138, 'average_shift': 2.4375}
+I0124 12:49:21.865400 139884543317888 run.py:199] (train) step 90: {'average_accuracy': 0.5651881856077143, 'average_shift': 4.453125}
+I0124 12:49:21.915289 139884543317888 run.py:206] (val) step 90: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:49:39.863213 139884543317888 run.py:199] (train) step 100: {'average_accuracy': 0.6620747070643065, 'average_shift': 3.625}
+I0124 12:49:39.911437 139884543317888 run.py:206] (val) step 100: {'average_accuracy': 0.6310471075890484, 'average_shift': 3.3125}
+I0124 12:49:39.911949 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:49:58.075455 139884543317888 run.py:199] (train) step 110: {'average_accuracy': 0.5160256180706547, 'average_shift': 5.34375}
+I0124 12:49:58.126421 139884543317888 run.py:206] (val) step 110: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:50:16.675531 139884543317888 run.py:199] (train) step 120: {'average_accuracy': 0.511722590664517, 'average_shift': 5.65625}
+I0124 12:50:16.721123 139884543317888 run.py:206] (val) step 120: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:50:34.808553 139884543317888 run.py:199] (train) step 130: {'average_accuracy': 0.5372875911363963, 'average_shift': 4.96875}
+I0124 12:50:34.860705 139884543317888 run.py:206] (val) step 130: {'average_accuracy': 0.5870694432577656, 'average_shift': 4.15625}
+I0124 12:50:52.797884 139884543317888 run.py:199] (train) step 140: {'average_accuracy': 0.6222257560148187, 'average_shift': 3.65625}
+I0124 12:50:52.846199 139884543317888 run.py:206] (val) step 140: {'average_accuracy': 0.554391108708543, 'average_shift': 3.53125}
+I0124 12:51:10.910164 139884543317888 run.py:199] (train) step 150: {'average_accuracy': 0.6071906672779835, 'average_shift': 4.53125}
+I0124 12:51:10.960862 139884543317888 run.py:206] (val) step 150: {'average_accuracy': 0.6433526999316473, 'average_shift': 3.9375}
+I0124 12:51:10.961329 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:51:29.031774 139884543317888 run.py:199] (train) step 160: {'average_accuracy': 0.5352999163316259, 'average_shift': 4.21875}
+I0124 12:51:29.079361 139884543317888 run.py:206] (val) step 160: {'average_accuracy': 0.5647725401426059, 'average_shift': 3.40625}
+I0124 12:51:46.982661 139884543317888 run.py:199] (train) step 170: {'average_accuracy': 0.6201626281704405, 'average_shift': 2.953125}
+I0124 12:51:47.031278 139884543317888 run.py:206] (val) step 170: {'average_accuracy': 0.5977354220158496, 'average_shift': 2.65625}
+I0124 12:52:05.169535 139884543317888 run.py:199] (train) step 180: {'average_accuracy': 0.6287083319748278, 'average_shift': 3.125}
+I0124 12:52:05.215558 139884543317888 run.py:206] (val) step 180: {'average_accuracy': 0.579742217303895, 'average_shift': 3.09375}
+I0124 12:52:23.329300 139884543317888 run.py:199] (train) step 190: {'average_accuracy': 0.5648587604802534, 'average_shift': 4.578125}
+I0124 12:52:23.379546 139884543317888 run.py:206] (val) step 190: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:52:41.380681 139884543317888 run.py:199] (train) step 200: {'average_accuracy': 0.5118163190948843, 'average_shift': 4.421875}
+I0124 12:52:41.425925 139884543317888 run.py:206] (val) step 200: {'average_accuracy': 0.5179158149964072, 'average_shift': 3.0625}
+I0124 12:52:59.260894 139884543317888 run.py:199] (train) step 210: {'average_accuracy': 0.5237937475589857, 'average_shift': 3.90625}
+I0124 12:52:59.307174 139884543317888 run.py:206] (val) step 210: {'average_accuracy': 0.4883736466384493, 'average_shift': 3.25}
+I0124 12:53:16.897308 139884543317888 run.py:199] (train) step 220: {'average_accuracy': 0.6158637369574869, 'average_shift': 4.109375}
+I0124 12:53:16.947461 139884543317888 run.py:206] (val) step 220: {'average_accuracy': 0.5829136164456887, 'average_shift': 3.4375}
+I0124 12:53:34.864293 139884543317888 run.py:199] (train) step 230: {'average_accuracy': 0.5456109601263673, 'average_shift': 5.203125}
+I0124 12:53:34.913701 139884543317888 run.py:206] (val) step 230: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 12:53:52.873899 139884543317888 run.py:199] (train) step 240: {'average_accuracy': 0.5595473461705563, 'average_shift': 2.46875}
+I0124 12:53:52.930173 139884543317888 run.py:206] (val) step 240: {'average_accuracy': 0.5177962799262141, 'average_shift': 2.1875}
+I0124 12:54:10.943161 139884543317888 run.py:199] (train) step 250: {'average_accuracy': 0.5704420514314332, 'average_shift': 3.8125}
+I0124 12:54:10.989969 139884543317888 run.py:206] (val) step 250: {'average_accuracy': 0.6050599117622145, 'average_shift': 2.90625}
+I0124 12:54:29.174586 139884543317888 run.py:199] (train) step 260: {'average_accuracy': 0.5630185952221797, 'average_shift': 3.03125}
+I0124 12:54:29.224941 139884543317888 run.py:206] (val) step 260: {'average_accuracy': 0.5206014996516641, 'average_shift': 2.34375}
+I0124 12:54:47.003741 139884543317888 run.py:199] (train) step 270: {'average_accuracy': 0.5639785587166102, 'average_shift': 4.34375}
+I0124 12:54:47.049989 139884543317888 run.py:206] (val) step 270: {'average_accuracy': 0.5898187498722037, 'average_shift': 3.875}
+I0124 12:55:04.688729 139884543317888 run.py:199] (train) step 280: {'average_accuracy': 0.5380329645736959, 'average_shift': 5.421875}
+I0124 12:55:04.736507 139884543317888 run.py:206] (val) step 280: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:55:22.777386 139884543317888 run.py:199] (train) step 290: {'average_accuracy': 0.4995424642356483, 'average_shift': 1.78125}
+I0124 12:55:22.822733 139884543317888 run.py:206] (val) step 290: {'average_accuracy': 0.5417733810414731, 'average_shift': 1.625}
+I0124 12:55:22.822936 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 12:55:40.907857 139884543317888 run.py:199] (train) step 300: {'average_accuracy': 0.5235954097663172, 'average_shift': 5.359375}
+I0124 12:55:40.957612 139884543317888 run.py:206] (val) step 300: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 12:55:59.297423 139884543317888 run.py:199] (train) step 310: {'average_accuracy': 0.5037992262027187, 'average_shift': 4.625}
+I0124 12:55:59.352329 139884543317888 run.py:206] (val) step 310: {'average_accuracy': 0.5898835128687102, 'average_shift': 3.71875}
+I0124 12:56:17.360842 139884543317888 run.py:199] (train) step 320: {'average_accuracy': 0.5700093536333377, 'average_shift': 4.5}
+I0124 12:56:17.407452 139884543317888 run.py:206] (val) step 320: {'average_accuracy': 0.6278139418147642, 'average_shift': 3.375}
+I0124 12:56:35.568137 139884543317888 run.py:199] (train) step 330: {'average_accuracy': 0.5443956179135406, 'average_shift': 5.046875}
+I0124 12:56:35.622094 139884543317888 run.py:206] (val) step 330: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:56:53.708513 139884543317888 run.py:199] (train) step 340: {'average_accuracy': 0.5153608233468673, 'average_shift': 5.375}
+I0124 12:56:53.756412 139884543317888 run.py:206] (val) step 340: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 12:57:12.821129 139884543317888 run.py:199] (train) step 350: {'average_accuracy': 0.5415757177361037, 'average_shift': 4.90625}
+I0124 12:57:12.892705 139884543317888 run.py:206] (val) step 350: {'average_accuracy': 0.5939475911515385, 'average_shift': 4.1875}
+I0124 12:57:30.990435 139884543317888 run.py:199] (train) step 360: {'average_accuracy': 0.6268700547308084, 'average_shift': 4.359375}
+I0124 12:57:31.034852 139884543317888 run.py:206] (val) step 360: {'average_accuracy': 0.6526994569757728, 'average_shift': 3.8125}
+I0124 12:57:31.035314 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:57:49.018106 139884543317888 run.py:199] (train) step 370: {'average_accuracy': 0.6577382541778823, 'average_shift': 4.234375}
+I0124 12:57:49.069957 139884543317888 run.py:206] (val) step 370: {'average_accuracy': 0.6740671517809677, 'average_shift': 3.6875}
+I0124 12:57:49.070218 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:58:07.040295 139884543317888 run.py:199] (train) step 380: {'average_accuracy': 0.5909837991869243, 'average_shift': 4.609375}
+I0124 12:58:07.087133 139884543317888 run.py:206] (val) step 380: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 12:58:25.150375 139884543317888 run.py:199] (train) step 390: {'average_accuracy': 0.6654365268106077, 'average_shift': 3.25}
+I0124 12:58:25.195312 139884543317888 run.py:206] (val) step 390: {'average_accuracy': 0.6942236833889796, 'average_shift': 2.625}
+I0124 12:58:25.195847 139884543317888 run.py:212] Saving new checkpoint for average accuracy...
+I0124 12:58:43.340774 139884543317888 run.py:199] (train) step 400: {'average_accuracy': 0.6578469528837178, 'average_shift': 3.65625}
+I0124 12:58:43.385167 139884543317888 run.py:206] (val) step 400: {'average_accuracy': 0.64728426726782, 'average_shift': 3.4375}
+I0124 12:59:01.297026 139884543317888 run.py:199] (train) step 410: {'average_accuracy': 0.5605538455299001, 'average_shift': 5.3125}
+I0124 12:59:01.340231 139884543317888 run.py:206] (val) step 410: {'average_accuracy': 0.6405299858219267, 'average_shift': 3.65625}
+I0124 12:59:19.275806 139884543317888 run.py:199] (train) step 420: {'average_accuracy': 0.6286257787969041, 'average_shift': 2.1875}
+I0124 12:59:19.318858 139884543317888 run.py:206] (val) step 420: {'average_accuracy': 0.6619726330869423, 'average_shift': 1.375}
+I0124 12:59:19.319427 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 12:59:37.558637 139884543317888 run.py:199] (train) step 430: {'average_accuracy': 0.5831361168447566, 'average_shift': 4.90625}
+I0124 12:59:37.604691 139884543317888 run.py:206] (val) step 430: {'average_accuracy': 0.6448869569757728, 'average_shift': 3.84375}
+I0124 12:59:55.936799 139884543317888 run.py:199] (train) step 440: {'average_accuracy': 0.5986369461426303, 'average_shift': 2.1875}
+I0124 12:59:55.982859 139884543317888 run.py:206] (val) step 440: {'average_accuracy': 0.6251061027788001, 'average_shift': 1.25}
+I0124 12:59:55.987573 139884543317888 run.py:217] Saving new checkpoint for average shift...
+I0124 13:00:14.063117 139884543317888 run.py:199] (train) step 450: {'average_accuracy': 0.6356471002955381, 'average_shift': 4.25}
+I0124 13:00:14.129659 139884543317888 run.py:206] (val) step 450: {'average_accuracy': 0.6371675336724679, 'average_shift': 3.40625}
+I0124 13:00:32.664294 139884543317888 run.py:199] (train) step 460: {'average_accuracy': 0.6479173949840795, 'average_shift': 2.859375}
+I0124 13:00:32.710179 139884543317888 run.py:206] (val) step 460: {'average_accuracy': 0.5958115098534505, 'average_shift': 2.1875}
+I0124 13:00:51.677804 139884543317888 run.py:199] (train) step 470: {'average_accuracy': 0.6939223332835467, 'average_shift': 3.25}
+I0124 13:00:51.727076 139884543317888 run.py:206] (val) step 470: {'average_accuracy': 0.6699714211227369, 'average_shift': 3.5}
+I0124 13:01:10.114812 139884543317888 run.py:199] (train) step 480: {'average_accuracy': 0.7060514725266561, 'average_shift': 3.5}
+I0124 13:01:10.163073 139884543317888 run.py:206] (val) step 480: {'average_accuracy': 0.6564942185007975, 'average_shift': 3.5625}
+I0124 13:01:28.402376 139884543317888 run.py:199] (train) step 490: {'average_accuracy': 0.5116364933575409, 'average_shift': 5.578125}
+I0124 13:01:28.451625 139884543317888 run.py:206] (val) step 490: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 13:01:47.362365 139884543317888 run.py:199] (train) step 500: {'average_accuracy': 0.5350655241086743, 'average_shift': 5.21875}
+I0124 13:01:47.410197 139884543317888 run.py:206] (val) step 500: {'average_accuracy': 0.5578805058245848, 'average_shift': 3.78125}
+I0124 13:02:05.618049 139884543317888 run.py:199] (train) step 510: {'average_accuracy': 0.5446691860421785, 'average_shift': 4.203125}
+I0124 13:02:05.666684 139884543317888 run.py:206] (val) step 510: {'average_accuracy': 0.5733821049199339, 'average_shift': 2.46875}
+I0124 13:02:23.888458 139884543317888 run.py:199] (train) step 520: {'average_accuracy': 0.5728672930419254, 'average_shift': 4.984375}
+I0124 13:02:23.936892 139884543317888 run.py:206] (val) step 520: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 13:02:42.297243 139884543317888 run.py:199] (train) step 530: {'average_accuracy': 0.5715291009112361, 'average_shift': 4.515625}
+I0124 13:02:42.348372 139884543317888 run.py:206] (val) step 530: {'average_accuracy': 0.6156010085491994, 'average_shift': 4.0}
+I0124 13:03:01.073473 139884543317888 run.py:199] (train) step 540: {'average_accuracy': 0.6438885983807858, 'average_shift': 4.203125}
+I0124 13:03:01.118922 139884543317888 run.py:206] (val) step 540: {'average_accuracy': 0.614689550215866, 'average_shift': 4.09375}
+I0124 13:03:19.238092 139884543317888 run.py:199] (train) step 550: {'average_accuracy': 0.552399849435695, 'average_shift': 4.984375}
+I0124 13:03:19.284647 139884543317888 run.py:206] (val) step 550: {'average_accuracy': 0.620939550215866, 'average_shift': 4.0625}
+I0124 13:03:37.501422 139884543317888 run.py:199] (train) step 560: {'average_accuracy': 0.7493149859605696, 'average_shift': 3.109375}
+I0124 13:03:37.550584 139884543317888 run.py:206] (val) step 560: {'average_accuracy': 0.6661639005183414, 'average_shift': 3.59375}
+I0124 13:03:56.056765 139884543317888 run.py:199] (train) step 570: {'average_accuracy': 0.745357907647478, 'average_shift': 2.84375}
+I0124 13:03:56.109644 139884543317888 run.py:206] (val) step 570: {'average_accuracy': 0.6569876395534292, 'average_shift': 3.0}
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 854, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 1002, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 1000, in value_and_grad_f
+    g = vjp_py(np.ones((), dtype=dtype))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/tree_util.py", line 326, in <lambda>
+    func = lambda *args, **kw: original_func(*args, **kw)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 2219, in _vjp_pullback_wrapper
+    ans = fun(*args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/tree_util.py", line 326, in <lambda>
+    func = lambda *args, **kw: original_func(*args, **kw)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 123, in unbound_vjp
+    arg_cts = backward_pass(jaxpr, reduce_axes, consts, dummy_args, cts)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 223, in backward_pass
+    params, call_jaxpr, invals, cts_in, cts_in_avals, reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 558, in call_transpose
+    out_flat = primitive.bind(fun, *all_args, **new_params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 690, in _xla_call_impl
+    out = compiled_fun(*args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 1100, in _execute_compiled
+    out_bufs = compiled.execute(input_bufs)
+KeyboardInterrupt

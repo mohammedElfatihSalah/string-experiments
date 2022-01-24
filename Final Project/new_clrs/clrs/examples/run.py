@@ -29,8 +29,8 @@ import clrs
 flags.DEFINE_string('algorithm', 'naive_string_matcher', 'Which algorithm to run.')
 flags.DEFINE_integer('seed', 42, 'Random seed to set')
 
-flags.DEFINE_integer('batch_size',32, 'Batch size used for training.')
-flags.DEFINE_integer('train_steps', 8000, 'Number of training steps.')
+flags.DEFINE_integer('batch_size',32 * 2, 'Batch size used for training.')
+flags.DEFINE_integer('train_steps', 80000, 'Number of training steps.')
 flags.DEFINE_integer('log_every', 10, 'Logging frequency.')
 flags.DEFINE_boolean('verbose_logging', False, 'Whether to log aux losses.')
 
@@ -106,7 +106,10 @@ def compute_average_metric(feedback, aux, hint_name):
   return accuracy, avg_shift
 
 def main(unused_argv):
+  run_name = input("Enter a name for your run >> ")
   wandb.init(project="String Algorithms", entity='arabkhla')
+  wandb.run.name = run_name
+  wandb.save()
   # Use canonical CLRS-21 samplers.
   clrs21_spec = clrs.CLRS21
   logging.info('Using CLRS21 spec: %s', clrs21_spec)

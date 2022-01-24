@@ -1,0 +1,124 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0124 11:16:02.434706 140479931844480 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+I0124 11:16:05.549973 140479931844480 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-01-24 11:16:05.563922: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0124 11:16:05.564166 140479931844480 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0124 11:16:05.564977 140479931844480 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0124 11:16:05.565186 140479931844480 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+I0124 11:16:39.646800 140479931844480 run.py:186] Compiled feedback step in 34.100808 s.
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+z shape >>  (32, 20, 64)
+nxt_hidden shape >>  (32, 20, 32)
+I0124 11:16:45.355746 140479931844480 run.py:199] (train) step 0: {'average_accuracy': 0.553528468516133, 'average_shift': 4.65625}
+I0124 11:16:49.911864 140479931844480 run.py:206] (val) step 0: {'average_accuracy': 0.5714649522626496, 'average_shift': 4.40625}
+I0124 11:16:49.912433 140479931844480 run.py:212] Saving new checkpoint for average accuracy...
+I0124 11:16:49.916117 140479931844480 run.py:217] Saving new checkpoint for average shift...
+I0124 11:17:03.197137 140479931844480 run.py:199] (train) step 10: {'average_accuracy': 0.5287791609942344, 'average_shift': 3.59375}
+I0124 11:17:03.241277 140479931844480 run.py:206] (val) step 10: {'average_accuracy': 0.5683687429164402, 'average_shift': 2.59375}
+I0124 11:17:03.241761 140479931844480 run.py:217] Saving new checkpoint for average shift...
+I0124 11:17:16.314929 140479931844480 run.py:199] (train) step 20: {'average_accuracy': 0.5325243052494891, 'average_shift': 5.09375}
+I0124 11:17:16.356961 140479931844480 run.py:206] (val) step 20: {'average_accuracy': 0.6028618539720513, 'average_shift': 3.46875}
+I0124 11:17:16.358451 140479931844480 run.py:212] Saving new checkpoint for average accuracy...
+I0124 11:17:29.613808 140479931844480 run.py:199] (train) step 30: {'average_accuracy': 0.5155408393689643, 'average_shift': 5.46875}
+I0124 11:17:29.657072 140479931844480 run.py:206] (val) step 30: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 11:17:42.805287 140479931844480 run.py:199] (train) step 40: {'average_accuracy': 0.5126232884117946, 'average_shift': 6.125}
+I0124 11:17:42.850759 140479931844480 run.py:206] (val) step 40: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 11:17:56.199332 140479931844480 run.py:199] (train) step 50: {'average_accuracy': 0.4926162121547184, 'average_shift': 5.90625}
+I0124 11:17:56.243652 140479931844480 run.py:206] (val) step 50: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 11:18:09.605144 140479931844480 run.py:199] (train) step 60: {'average_accuracy': 0.5938058316275227, 'average_shift': 4.125}
+I0124 11:18:09.651628 140479931844480 run.py:206] (val) step 60: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 11:18:22.855618 140479931844480 run.py:199] (train) step 70: {'average_accuracy': 0.5200938840947065, 'average_shift': 5.21875}
+I0124 11:18:22.897263 140479931844480 run.py:206] (val) step 70: {'average_accuracy': 0.5874371744848718, 'average_shift': 4.3125}
+I0124 11:18:36.222879 140479931844480 run.py:199] (train) step 80: {'average_accuracy': 0.6026726745476747, 'average_shift': 4.5625}
+I0124 11:18:36.268412 140479931844480 run.py:206] (val) step 80: {'average_accuracy': 0.6166639373053846, 'average_shift': 4.125}
+I0124 11:18:36.268625 140479931844480 run.py:212] Saving new checkpoint for average accuracy...
+I0124 11:18:49.595827 140479931844480 run.py:199] (train) step 90: {'average_accuracy': 0.5598264021517698, 'average_shift': 5.28125}
+I0124 11:18:49.646976 140479931844480 run.py:206] (val) step 90: {'average_accuracy': 0.6001975911515385, 'average_shift': 4.21875}
+I0124 11:19:03.099412 140479931844480 run.py:199] (train) step 100: {'average_accuracy': 0.5517405960589977, 'average_shift': 3.09375}
+I0124 11:19:03.144443 140479931844480 run.py:206] (val) step 100: {'average_accuracy': 0.5762051134172844, 'average_shift': 1.96875}
+I0124 11:19:03.144902 140479931844480 run.py:217] Saving new checkpoint for average shift...
+I0124 11:19:16.315117 140479931844480 run.py:199] (train) step 110: {'average_accuracy': 0.5446008852258851, 'average_shift': 4.78125}
+I0124 11:19:16.358710 140479931844480 run.py:206] (val) step 110: {'average_accuracy': 0.6020205078182052, 'average_shift': 3.96875}
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 854, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 1002, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 993, in value_and_grad_f
+    ans, vjp_py = _vjp(f_partial, *dyn_args, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 2313, in _vjp
+    flat_fun, primals_flat, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 116, in vjp
+    out_primals, pvals, jaxpr, consts = linearize(traceable, *primals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 103, in linearize
+    jaxpr, out_pvals, consts = pe.trace_to_jaxpr(jvpfun_flat, in_pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 513, in trace_to_jaxpr
+    jaxpr, (out_pvals, consts, env) = fun.call_wrapped(pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 875, in loss
+    gt_diffs) = self.net_fn_apply(params, feedback.features, True)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 419, in cache_miss
+    donated_invars=donated_invars, inline=inline)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 323, in process_call
+    result = call_primitive.bind(f_jvp, *primals, *nonzero_tangents, **new_params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 203, in process_call
+    f, in_pvals, app, instantiate=False)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 311, in partial_eval
+    out_flat, (out_avals, jaxpr, env) = app(f, *in_consts), aux()
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 690, in _xla_call_impl
+    out = compiled_fun(*args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 1100, in _execute_compiled
+    out_bufs = compiled.execute(input_bufs)
+KeyboardInterrupt

@@ -130,31 +130,31 @@ class Net(hk.Module):
       decoded_j = decoded_hint['j'].data
       decoded_s = decoded_hint['s'].data
 
-      prev_s = prev_hint_.s
-      prev_i = prev_hint_.i
-      prev_j = prev_hint_.j
+      # prev_s = prev_hint_.s
+      # prev_i = prev_hint_.i
+      # prev_j = prev_hint_.j
 
-      bs, nb_nodes = prev_s.shape
+      # bs, nb_nodes = prev_s.shape
 
-      # s
-      idx = jnp.argmax(prev_s, axis=-1) + 1
-      idx = hk.one_hot(idx, nb_nodes)
-      new_s = jnp.where(advance[:,None] == 1, idx, decoded_s)
+      # # s
+      # idx = jnp.argmax(prev_s, axis=-1) + 1
+      # idx = hk.one_hot(idx, nb_nodes)
+      # new_s = jnp.where(advance[:,None] == 1, idx, decoded_s)
 
-      # i
-      new_i = jnp.where(advance[:,None] != 1, decoded_i, new_s)
+      # # i
+      # new_i = jnp.where(advance[:,None] != 1, decoded_i, new_s)
 
-      # j 
-      print("start of pattern >> ", 4* nb_nodes // 5 )
-      start_of_pattern_idx = 4* nb_nodes // 5
-      reset_j = np.zeros((bs, nb_nodes))
-      reset_j[:, start_of_pattern_idx] = 1
-      new_j = jnp.where(advance[:,None] != 1, decoded_j, reset_j)
-      # End
+      # # j 
+      # print("start of pattern >> ", 4* nb_nodes // 5 )
+      # start_of_pattern_idx = 4* nb_nodes // 5
+      # reset_j = np.zeros((bs, nb_nodes))
+      # reset_j[:, start_of_pattern_idx] = 1
+      # new_j = jnp.where(advance[:,None] != 1, decoded_j, reset_j)
+      # # End
 
-      prev_hint_.s = new_s
-      prev_hint_.i = new_i
-      prev_hint_.j = new_j
+      prev_hint_.s = decoded_s
+      prev_hint_.i = decoded_i
+      prev_hint_.j = decoded_j
 
 
       cur_hint = []
@@ -397,7 +397,7 @@ class Net(hk.Module):
           activation=jax.nn.relu,
           reduction=jnp.max,
           msgs_mlp_sizes=[
-             # self.hidden_dim,
+              self.hidden_dim,
               self.hidden_dim,
           ])
     elif self.kind == 'gat':

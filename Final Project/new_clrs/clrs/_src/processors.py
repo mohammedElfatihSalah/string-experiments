@@ -185,13 +185,13 @@ class MPNN(hk.Module):
 
     m_1 = hk.Linear(self.mid_size)
     m_2 = hk.Linear(self.mid_size)
-    m_e = hk.Linear(self.mid_size)
-    m_g = hk.Linear(self.mid_size)
+    #m_e = hk.Linear(self.mid_size)
+    #m_g = hk.Linear(self.mid_size)
 
     o1 = hk.Linear(self.out_size)
     #o2 = hk.Linear(self.out_size)
 
-    decision_o2 = create_decision_network(self.out_size)
+    #decision_o2 = create_decision_network(self.out_size)
      
 
     
@@ -223,7 +223,7 @@ class MPNN(hk.Module):
     h_1 = o1(features)
     #h_2 = o2(msgs)
     #h_2 = feedforward_decision(decision_o2, msgs)
-    h_2 =  hk.nets.MLP([32, 64, 32])(jax.nn.relu(msgs))
+    h_2 =  hk.nets.MLP([32, 64, self.out_size])(jax.nn.relu(msgs))
 
     ret = h_1 + h_2
 
