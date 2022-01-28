@@ -1,0 +1,81 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0127 20:36:24.060156 139640444434304 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+I0127 20:36:27.432498 139640444434304 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-01-27 20:36:27.446698: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0127 20:36:27.446951 139640444434304 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0127 20:36:27.447626 139640444434304 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0127 20:36:27.447787 139640444434304 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+adj shape >>  (64, 20, 20)
+max
+z shape >>  (64, 20, 96)
+nxt_hidden shape >>  (64, 20, 32)
+adj shape >>  (64, 20, 20)
+max
+z shape >>  (64, 20, 96)
+nxt_hidden shape >>  (64, 20, 32)
+adj shape >>  (64, 20, 20)
+max
+z shape >>  (64, 20, 96)
+nxt_hidden shape >>  (64, 20, 32)
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 180, in main
+    model.init(feedback.features, FLAGS.seed)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 854, in init
+    self.params = self.net_fn.init(jax.random.PRNGKey(seed), features, True)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 113, in init_fn
+    params, state = f.init(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 364, in init_fn
+    f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 846, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 268, in __call__
+    mp_state, output_mp_state)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/tree_util.py", line 178, in tree_map
+    return treedef.unflatten(f(*xs) for xs in zip(*all_leaves))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/tree_util.py", line 178, in <genexpr>
+    return treedef.unflatten(f(*xs) for xs in zip(*all_leaves))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 267, in <lambda>
+    lambda init, tail: jnp.concatenate([init[None], tail], axis=0),
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 3402, in concatenate
+    for i in range(0, len(arrays), k)]
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 3402, in <listcomp>
+    for i in range(0, len(arrays), k)]
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/lax.py", line 528, in concatenate
+    return concatenate_p.bind(*operands, dimension=dimension)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 272, in bind
+    out = top_trace.process_primitive(self, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 624, in process_primitive
+    return primitive.impl(*tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 417, in apply_primitive
+    **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 440, in xla_primitive_callable
+    prim.name, donated_invars, *arg_specs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 893, in compile
+    self.name, self.hlo(), *self.compile_args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 921, in from_xla_computation
+    compiled = compile_or_get_cached(backend, xla_computation, options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 863, in compile_or_get_cached
+    return backend_compile(backend, computation, compile_options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 474, in backend_compile
+    return backend.compile(built_c, compile_options=options)
+KeyboardInterrupt

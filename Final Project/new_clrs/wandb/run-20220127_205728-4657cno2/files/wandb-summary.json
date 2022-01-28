@@ -1,0 +1,1 @@
+{"s": 0.6331073641777039, "i": 0.5237486958503723, "j": 0.46820512413978577, "advance": 0.25361523032188416, "_runtime": 2679, "_timestamp": 1643319727, "_step": 2804, "train loss": 1.9999791383743286, "train match": 1.0, "s_g_average": 0.625401248057498, "average_shift": 2.3125, "validation match": 1.0, "s_g_average_val": 0.591973665041099, "average_shift_val": 2.21875}

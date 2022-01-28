@@ -1,0 +1,28 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0127 22:39:10.717001 139977766545280 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 116, in main
+    train_sampler, spec = clrs.clrs21_train(FLAGS.algorithm)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/samplers.py", line 182, in clrs21_train
+    length=CLRS21['train']['length'],
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/samplers.py", line 227, in build_sampler
+    algorithm, spec, num_samples, seed=seed, *args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/samplers.py", line 92, in __init__
+    _, probes = algorithm(*data)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/algorithms/strings.py", line 344, in naive_string_matcher
+    predecessor = get_predecessor(T, P)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/algorithms/strings.py", line 320, in get_predecessor
+    predecessor = np.eye((nb_pattern + nb_text, nb_pattern + nb_text))
+  File "/usr/local/lib/python3.7/dist-packages/numpy/lib/twodim_base.py", line 214, in eye
+    m = zeros((N, M), dtype=dtype, order=order)
+TypeError: 'tuple' object cannot be interpreted as an integer

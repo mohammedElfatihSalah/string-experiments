@@ -1,0 +1,105 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0127 20:50:31.553619 139937474406272 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+I0127 20:50:34.999447 139937474406272 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-01-27 20:50:35.014431: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0127 20:50:35.014748 139937474406272 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0127 20:50:35.015366 139937474406272 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0127 20:50:35.015553 139937474406272 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+input name >>  string
+first value >>  True
+current node fts shape >>  (32, 20, 4)
+input name >>  pos
+first value >>  False
+current node fts shape >>  (32, 20, 8)
+input name >>  key
+first value >>  False
+current node fts shape >>  (32, 20, 8)
+adj shape >>  (32, 20, 20)
+max
+z shape >>  (32, 20, 12)
+nxt_hidden shape >>  (32, 20, 12)
+input name >>  string
+first value >>  True
+current node fts shape >>  (32, 20, 4)
+input name >>  pos
+first value >>  False
+current node fts shape >>  (32, 20, 8)
+input name >>  key
+first value >>  False
+current node fts shape >>  (32, 20, 8)
+adj shape >>  (32, 20, 20)
+max
+z shape >>  (32, 20, 12)
+nxt_hidden shape >>  (32, 20, 12)
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 180, in main
+    model.init(feedback.features, FLAGS.seed)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 857, in init
+    self.params = self.net_fn.init(jax.random.PRNGKey(seed), features, True)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 113, in init_fn
+    params, state = f.init(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 364, in init_fn
+    f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 849, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 264, in __call__
+    length=nb_mp_steps - 1)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 480, in scan
+    init, y0 = f(init, x0)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 203, in _msg_passing_step
+    output_preds_cand[outp])
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 57, in _is_not_done_broadcast
+    is_not_done = (lengths > i + 1) * 1.0
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 6585, in deferring_binary_op
+    return binary_op(self, other)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 755, in fn
+    x1, x2 =  _promote_args(numpy_fn.__name__, x1, x2)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 581, in _promote_args
+    return _promote_shapes(fun_name, *_promote_dtypes(*args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 526, in _promote_dtypes
+    return [lax._convert_element_type(x, to_dtype, weak_type) for x in args]
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 526, in <listcomp>
+    return [lax._convert_element_type(x, to_dtype, weak_type) for x in args]
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/lax.py", line 481, in _convert_element_type
+    weak_type=new_weak_type)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 272, in bind
+    out = top_trace.process_primitive(self, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 624, in process_primitive
+    return primitive.impl(*tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 417, in apply_primitive
+    **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 440, in xla_primitive_callable
+    prim.name, donated_invars, *arg_specs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 893, in compile
+    self.name, self.hlo(), *self.compile_args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 921, in from_xla_computation
+    compiled = compile_or_get_cached(backend, xla_computation, options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 863, in compile_or_get_cached
+    return backend_compile(backend, computation, compile_options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 474, in backend_compile
+    return backend.compile(built_c, compile_options=options)
+KeyboardInterrupt

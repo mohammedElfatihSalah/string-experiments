@@ -29,12 +29,12 @@ import clrs
 flags.DEFINE_string('algorithm', 'naive_string_matcher', 'Which algorithm to run.')
 flags.DEFINE_integer('seed', 42, 'Random seed to set')
 
-flags.DEFINE_integer('batch_size',32 * 2, 'Batch size used for training.')
-flags.DEFINE_integer('train_steps', 3* 80000, 'Number of training steps.')
+flags.DEFINE_integer('batch_size',32, 'Batch size used for training.')
+flags.DEFINE_integer('train_steps', 30000, 'Number of training steps.')
 flags.DEFINE_integer('log_every', 10, 'Logging frequency.')
 flags.DEFINE_boolean('verbose_logging', False, 'Whether to log aux losses.')
 
-flags.DEFINE_integer('hidden_size', 32,
+flags.DEFINE_integer('hidden_size', 4,
                    'Number of hidden size units of the model.')
 # changed .003 -> .0003
 flags.DEFINE_float('learning_rate', 0.003, 'Learning rate to use.')

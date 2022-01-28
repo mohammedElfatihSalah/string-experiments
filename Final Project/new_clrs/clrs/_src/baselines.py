@@ -228,7 +228,7 @@ class Net(hk.Module):
     self._construct_processor()
 
     nb_mp_steps = max(1, hints[0].data.shape[0] - 1)
-    hiddens = jnp.zeros((self.batch_size, nb_nodes, self.hidden_dim))
+    hiddens = jnp.zeros((self.batch_size, nb_nodes, self.hidden_dim * 3))
 
     mp_state = _MessagePassingScanState(
         hint_preds=None, diff_logits=None, gt_diffs=None,
@@ -392,13 +392,13 @@ class Net(hk.Module):
     """Constructs processor."""
     if self.kind in ['deepsets', 'mpnn', 'pgn']:
       self.mpnn = processors.MPNN(
-          out_size=self.hidden_dim,
+          out_size=self.hidden_dim * 3,
           mid_act=jax.nn.relu,
           activation=jax.nn.relu,
           reduction=jnp.max,
           msgs_mlp_sizes=[
-              self.hidden_dim,
-              self.hidden_dim,
+              self.hidden_dim * 4,
+              self.hidden_dim * 4,
           ])
     elif self.kind == 'gat':
       self.mpnn = processors.GAT(
@@ -488,10 +488,11 @@ class Net(hk.Module):
     result = jnp.max(result, axis=1)
     return result
 
-  def aggregate(self, node_fts, encoded, type_, hidden_dim):
+  def aggregate(self, node_fts, encoded, type_, hidden_dim, first):
     if type_ == 'concat':
-      _, _, dim = node_fts.shape
-      if dim == hidden_dim:
+      if first:
+        node_fts += encoded
+      else:
         node_fts = jnp.concatenate([node_fts, encoded], axis=-1)
     elif type_ == 'sum':
       node_fts += encoded
@@ -517,6 +518,7 @@ class Net(hk.Module):
         jnp.expand_dims(jnp.eye(nb_nodes), 0), self.batch_size, axis=0)
     # added mat
     mat = None
+    first = True
     for inp in inputs:
       if inp.name =='mat':
         mat = inp.data
@@ -537,7 +539,12 @@ class Net(hk.Module):
                       0.0).astype('float32')
         else:
           # FROM SUM -> AGGREGATE
-          node_fts += encoding #self.aggregate(node_fts, encoding, 'concat', self.hidden_dim)
+          #print("input name >> ", inp.name)
+          #print("first value >> ", first)
+          node_fts = self.aggregate(node_fts, encoding, 'concat', self.hidden_dim, first)
+          #print("current node fts shape >> ", node_fts.shape)
+          first = False 
+          #node_fts += encoding #self.aggregate(node_fts, encoding, 'concat', self.hidden_dim)
         
       elif inp.location == _Location.EDGE:
         if inp.type_ == _Type.POINTER:
@@ -571,8 +578,11 @@ class Net(hk.Module):
             adj_mat += ((in_data + jnp.transpose(in_data, (0, 2, 1))) >
                         0.0).astype('float32')
           else:
-            node_fts += encoding
-            #node_fts = self.aggregate(node_fts, encoding, 'concat', self.hidden_dim)
+            #node_fts += encoding
+            #print("hint name >> ", hint.name)
+            node_fts = self.aggregate(node_fts, encoding, 'concat', self.hidden_dim,first)
+            #print('node_fts shape >> ', node_fts.shape)
+            first = False
 
         elif hint.location == _Location.EDGE:
           if hint.type_ == _Type.POINTER:
@@ -615,8 +625,9 @@ class Net(hk.Module):
     nxt_hidden = self.mpnn(z, edge_fts, graph_fts,
                            (adj_mat > 0.0).astype('float32'))
 
-    print("z shape >> ", z.shape)
-    print("nxt_hidden shape >> ", nxt_hidden.shape)
+    
+    #print("z shape >> ", z.shape)
+    #print("nxt_hidden shape >> ", nxt_hidden.shape)
     
     
     #print("temp shape >> ", temp.shape)

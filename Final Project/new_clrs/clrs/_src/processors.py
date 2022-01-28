@@ -209,10 +209,13 @@ class MPNN(hk.Module):
     if self.mid_act is not None:
       msgs = self.mid_act(msgs)
 
+    print('adj shape >> ', adj.shape)
     if self.reduction == jnp.mean:
-      msgs = jnp.sum(msgs * jnp.expand_dims(adj, -1), axis=-1)
+      print('mean')
+      msgs = jnp.sum(msgs * jnp.expand_dims(adj, -1), axis=1)
       msgs = msgs / jnp.sum(adj, axis=-1, keepdims=True)
     else:
+      print('max')
       #print("msgs dim >> ", msgs.shape)
       #print("adj dim >> ", adj.shape)
       # axis 1 >> 2 
@@ -223,7 +226,7 @@ class MPNN(hk.Module):
     h_1 = o1(features)
     #h_2 = o2(msgs)
     #h_2 = feedforward_decision(decision_o2, msgs)
-    h_2 =  hk.nets.MLP([32, 64, self.out_size])(jax.nn.relu(msgs))
+    h_2 =  hk.nets.MLP([32, 64, 64, self.out_size])(jax.nn.relu(msgs))
 
     ret = h_1 + h_2
 
