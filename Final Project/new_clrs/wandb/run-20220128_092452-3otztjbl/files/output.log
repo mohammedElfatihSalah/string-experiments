@@ -1,0 +1,100 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0128 09:25:00.435625 140189532112768 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 5}, 'val': {'num_samples': 32, 'length': 16, 'seed': 34}, 'test': {'num_samples': 32, 'length': 64, 'seed': 41}}
+I0128 09:25:02.285081 140189532112768 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-01-28 09:25:02.431647: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0128 09:25:02.432033 140189532112768 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0128 09:25:02.433087 140189532112768 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0128 09:25:02.433375 140189532112768 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+mid size >>  12
+adj shape >>  (32, 20, 20)
+max
+mid size >>  12
+adj shape >>  (32, 20, 20)
+max
+mid size >>  12
+adj shape >>  (32, 20, 20)
+max
+mid size >>  12
+adj shape >>  (32, 20, 20)
+max
+mid size >>  12
+adj shape >>  (32, 20, 20)
+max
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 865, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 1013, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 993, in value_and_grad_f
+    ans, vjp_py = _vjp(f_partial, *dyn_args, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 2313, in _vjp
+    flat_fun, primals_flat, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 116, in vjp
+    out_primals, pvals, jaxpr, consts = linearize(traceable, *primals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 103, in linearize
+    jaxpr, out_pvals, consts = pe.trace_to_jaxpr(jvpfun_flat, in_pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 513, in trace_to_jaxpr
+    jaxpr, (out_pvals, consts, env) = fun.call_wrapped(pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines.py", line 886, in loss
+    gt_diffs) = self.net_fn_apply(params, feedback.features, True)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 419, in cache_miss
+    donated_invars=donated_invars, inline=inline)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 323, in process_call
+    result = call_primitive.bind(f_jvp, *primals, *nonzero_tangents, **new_params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 203, in process_call
+    f, in_pvals, app, instantiate=False)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 311, in partial_eval
+    out_flat, (out_avals, jaxpr, env) = app(f, *in_consts), aux()
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 688, in _xla_call_impl
+    *unsafe_map(arg_spec, args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 263, in memoized_fun
+    ans = call(fun, *args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 893, in compile
+    self.name, self.hlo(), *self.compile_args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 921, in from_xla_computation
+    compiled = compile_or_get_cached(backend, xla_computation, options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 863, in compile_or_get_cached
+    return backend_compile(backend, computation, compile_options)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 474, in backend_compile
+    return backend.compile(built_c, compile_options=options)
+KeyboardInterrupt

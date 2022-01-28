@@ -320,12 +320,12 @@ def get_predecessor(T, P):
   predecessor = np.eye(nb_pattern + nb_text)
 
   for i in range(1,nb_text):
-    predecessor[i-1,i] = 1
-    #predecessor[i,i-1] = 1
+    #predecessor[i-1,i] = 1
+    predecessor[i,i-1] = 1
   
   for j in range(1 + nb_text, nb_pattern + nb_text):
-    predecessor[j-1, j] = 1
-    #predecessor[j, j-1] = 1
+    #predecessor[j-1, j] = 1
+    predecessor[j, j-1] = 1
   
   return predecessor
 

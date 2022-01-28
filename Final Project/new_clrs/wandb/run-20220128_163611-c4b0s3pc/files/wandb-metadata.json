@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.4.144+-x86_64-with-Ubuntu-18.04-bionic",
+    "python": "3.7.12",
+    "heartbeatAt": "2022-01-28T16:36:22.361778",
+    "startedAt": "2022-01-28T16:36:11.658644",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py",
+    "codePath": "Final Project/new_clrs/clrs/examples/run.py",
+    "git": {
+        "remote": "https://mohammedElfatihSalah:@github.com/mohammedElfatihSalah/string-experiments.git",
+        "commit": "b1f3dc48f0c24c363a493023ef806f351c1ad94e"
+    },
+    "email": null,
+    "root": "/content/drive/MyDrive",
+    "host": "5f2edf919d31",
+    "username": "root",
+    "executable": "/usr/bin/python3"
+}

@@ -185,6 +185,8 @@ class MPNN(hk.Module):
 
     m_1 = hk.Linear(self.mid_size)
     m_2 = hk.Linear(self.mid_size)
+    print("mid size >> ", self.mid_size )
+    print("out size >> ", self.out_size)
     #m_e = hk.Linear(self.mid_size)
     #m_g = hk.Linear(self.mid_size)
 
@@ -203,8 +205,8 @@ class MPNN(hk.Module):
 
     msgs = (
         jnp.expand_dims(msg_1, axis=1) + jnp.expand_dims(msg_2, axis=2))
-    if self._msgs_mlp_sizes is not None:
-      msgs = hk.nets.MLP(self._msgs_mlp_sizes)(jax.nn.relu(msgs))
+    #if self._msgs_mlp_sizes is not None:
+    #  msgs = hk.nets.MLP(self._msgs_mlp_sizes)(jax.nn.relu(msgs))
 
     if self.mid_act is not None:
       msgs = self.mid_act(msgs)
