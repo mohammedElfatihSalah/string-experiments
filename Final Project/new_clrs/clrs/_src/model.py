@@ -44,6 +44,12 @@ class Model(abc.ABC):
     """Advance to the next task, incorporating any available feedback."""
     pass
 
+  @abc.abstractmethod
+  def predict2(self, features: samplers.Features) -> Result:
+    """Make predictions about the current task."""
+    pass
+
+
 
 def evaluate(
     feedback: samplers.Feedback,

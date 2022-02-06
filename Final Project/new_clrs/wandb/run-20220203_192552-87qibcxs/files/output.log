@@ -1,0 +1,33 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0203 19:25:57.690589 140623419967360 run.py:118] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 1}, 'val': {'num_samples': 32, 'length': 64, 'seed': 2}, 'test': {'num_samples': 32, 'length': 64, 'seed': 3}}
+I0203 19:26:01.574118 140623419967360 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-02-03 19:26:01.588070: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0203 19:26:01.588475 140623419967360 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0203 19:26:01.589212 140623419967360 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0203 19:26:01.589432 140623419967360 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 297, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    model.init(feedback.features, FLAGS.seed)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 955, in init
+    self.params = self.net_fn.init(jax.random.PRNGKey(seed), features, True)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 113, in init_fn
+    params, state = f.init(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 364, in init_fn
+    f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 947, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, manual=self.manual, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+TypeError: __call__() missing 1 required positional argument: 'manual'

@@ -1,0 +1,182 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0202 10:40:46.319320 139826883188608 run.py:115] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 1}, 'val': {'num_samples': 32, 'length': 16, 'seed': 2}, 'test': {'num_samples': 32, 'length': 64, 'seed': 3}}
+I0202 10:40:54.189484 139826883188608 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-02-02 10:40:54.310575: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0202 10:40:54.310948 139826883188608 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+start of pattern >>  16
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+start of pattern >>  16
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+start of pattern >>  16
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+I0202 10:40:54.313829 139826883188608 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0202 10:40:54.314169 139826883188608 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+Traceback (most recent call last):
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 953, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1118, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 993, in value_and_grad_f
+    ans, vjp_py = _vjp(f_partial, *dyn_args, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 2313, in _vjp
+    flat_fun, primals_flat, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 116, in vjp
+    out_primals, pvals, jaxpr, consts = linearize(traceable, *primals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 103, in linearize
+    jaxpr, out_pvals, consts = pe.trace_to_jaxpr(jvpfun_flat, in_pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 513, in trace_to_jaxpr
+    jaxpr, (out_pvals, consts, env) = fun.call_wrapped(pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1106, in loss
+    -jnp.sum(masked_truth * jax.nn.log_softmax(pred))
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 521, in __rmul__
+    def __rmul__(self, other): return self.aval._rmul(self, other)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 6585, in deferring_binary_op
+    return binary_op(self, other)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 419, in cache_miss
+    donated_invars=donated_invars, inline=inline)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 323, in process_call
+    result = call_primitive.bind(f_jvp, *primals, *nonzero_tangents, **new_params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 203, in process_call
+    f, in_pvals, app, instantiate=False)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 311, in partial_eval
+    out_flat, (out_avals, jaxpr, env) = app(f, *in_consts), aux()
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 688, in _xla_call_impl
+    *unsafe_map(arg_spec, args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 263, in memoized_fun
+    ans = call(fun, *args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 772, in lower_xla_callable
+    fun, abstract_args, pe.debug_info_final(fun, "jit"))
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1542, in trace_to_jaxpr_final
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(fun, main, in_avals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1520, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 689, in fn
+    x1, x2 = _promote_args(numpy_fn.__name__, x1, x2)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 581, in _promote_args
+    return _promote_shapes(fun_name, *_promote_dtypes(*args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 500, in _promote_shapes
+    result_rank = len(lax.broadcast_shapes(*shapes))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/lax.py", line 115, in broadcast_shapes
+    .format(tuple(map(tuple, shapes))))
+jax._src.traceback_util.UnfilteredStackTrace: ValueError: Incompatible shapes for broadcasting: ((1, 32), (32, 20))
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+--------------------
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 294, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 183, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 953, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1118, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1106, in loss
+    -jnp.sum(masked_truth * jax.nn.log_softmax(pred))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 6585, in deferring_binary_op
+    return binary_op(self, other)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 689, in fn
+    x1, x2 = _promote_args(numpy_fn.__name__, x1, x2)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 581, in _promote_args
+    return _promote_shapes(fun_name, *_promote_dtypes(*args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/numpy/lax_numpy.py", line 500, in _promote_shapes
+    result_rank = len(lax.broadcast_shapes(*shapes))
+ValueError: Incompatible shapes for broadcasting: ((1, 32), (32, 20))

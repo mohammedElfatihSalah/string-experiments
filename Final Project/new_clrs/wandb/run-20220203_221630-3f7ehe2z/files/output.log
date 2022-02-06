@@ -1,0 +1,230 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0203 22:16:35.206920 140609987934080 run.py:118] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 1}, 'val': {'num_samples': 32, 'length': 64, 'seed': 2}, 'test': {'num_samples': 32, 'length': 64, 'seed': 3}}
+I0203 22:16:39.131715 140609987934080 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-02-03 22:16:39.143709: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0203 22:16:39.143994 140609987934080 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0203 22:16:39.144714 140609987934080 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0203 22:16:39.144882 140609987934080 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+Traceback (most recent call last):
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 298, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 187, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 964, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1135, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 993, in value_and_grad_f
+    ans, vjp_py = _vjp(f_partial, *dyn_args, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 2313, in _vjp
+    flat_fun, primals_flat, reduce_axes=reduce_axes)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 116, in vjp
+    out_primals, pvals, jaxpr, consts = linearize(traceable, *primals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 103, in linearize
+    jaxpr, out_pvals, consts = pe.trace_to_jaxpr(jvpfun_flat, in_pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 513, in trace_to_jaxpr
+    jaxpr, (out_pvals, consts, env) = fun.call_wrapped(pvals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 990, in loss
+    gt_diffs) = self.net_fn_apply(params, feedback.features, repred=True, manual=True)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 419, in cache_miss
+    donated_invars=donated_invars, inline=inline)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/ad.py", line 323, in process_call
+    result = call_primitive.bind(f_jvp, *primals, *nonzero_tangents, **new_params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 203, in process_call
+    f, in_pvals, app, instantiate=False)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 311, in partial_eval
+    out_flat, (out_avals, jaxpr, env) = app(f, *in_consts), aux()
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 688, in _xla_call_impl
+    *unsafe_map(arg_spec, args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 263, in memoized_fun
+    ans = call(fun, *args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 772, in lower_xla_callable
+    fun, abstract_args, pe.debug_info_final(fun, "jit"))
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1542, in trace_to_jaxpr_final
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(fun, main, in_avals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1520, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 216, in apply_fn
+    return f.apply(params, None, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 127, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 383, in apply_fn
+    out = f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 949, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 374, in __call__
+    length=nb_mp_steps - 1)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 509, in scan
+    stateful_fun, init, xs, length, reverse, unroll=unroll)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 1345, in scan
+    init_flat, carry_avals, carry_avals_out, init_tree, *rest = _create_jaxpr(init)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 1332, in _create_jaxpr
+    f, in_tree, carry_avals + x_avals, "scan")
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 78, in _initial_style_jaxpr
+    fun, in_tree, in_avals, primitive_name)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 71, in _initial_style_open_jaxpr
+    jaxpr, _, consts = pe.trace_to_jaxpr_dynamic(wrapped_fun, in_avals, debug)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1510, in trace_to_jaxpr_dynamic
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(fun, main, in_avals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1520, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 491, in stateful_fun
+    carry, out = f(carry, x)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 198, in _msg_passing_step
+    if (not first_step) and repred and self.decode_hints:
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 549, in __bool__
+    def __bool__(self): return self.aval._bool(self)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1000, in error
+    raise ConcretizationTypeError(arg, fname_context)
+jax._src.traceback_util.UnfilteredStackTrace: jax._src.errors.ConcretizationTypeError: Abstract tracer value encountered where concrete value is expected: Traced<ShapedArray(bool[], weak_type=True):JaxprTrace(level=1/1)>
+The problem arose with the `bool` function.
+See https://jax.readthedocs.io/en/latest/errors.html#jax.errors.ConcretizationTypeError
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+--------------------
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 298, in <module>
+    app.run(main)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 187, in main
+    cur_loss = model.feedback(feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 964, in feedback
+    feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 1135, in update
+    lss, grads = jax.value_and_grad(loss)(params, feedback)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 990, in loss
+    gt_diffs) = self.net_fn_apply(params, feedback.features, repred=True, manual=True)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 216, in apply_fn
+    return f.apply(params, None, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 127, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 383, in apply_fn
+    out = f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 949, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 374, in __call__
+    length=nb_mp_steps - 1)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 509, in scan
+    stateful_fun, init, xs, length, reverse, unroll=unroll)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 491, in stateful_fun
+    carry, out = f(carry, x)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 198, in _msg_passing_step
+    if (not first_step) and repred and self.decode_hints:
+jax._src.errors.ConcretizationTypeError: Abstract tracer value encountered where concrete value is expected: Traced<ShapedArray(bool[], weak_type=True):JaxprTrace(level=1/1)>
+The problem arose with the `bool` function.
+See https://jax.readthedocs.io/en/latest/errors.html#jax.errors.ConcretizationTypeError
+manual >>  Traced<ShapedArray(bool[], weak_type=True):JaxprTrace(level=1/1)>
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  Traced<ShapedArray(bool[], weak_type=True):JaxprTrace(level=1/1)>

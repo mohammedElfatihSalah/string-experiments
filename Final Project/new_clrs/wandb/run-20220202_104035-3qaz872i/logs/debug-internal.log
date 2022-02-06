@@ -1,0 +1,157 @@
+2022-02-02 10:40:40,811 INFO    MainThread:420 [internal.py:wandb_internal():92] W&B internal server running at pid: 420, started at: 2022-02-02 10:40:40.805777
+2022-02-02 10:40:40,846 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: check_version
+2022-02-02 10:40:40,846 DEBUG   SenderThread:420 [sender.py:send():235] send: header
+2022-02-02 10:40:40,847 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: check_version
+2022-02-02 10:40:40,846 INFO    WriterThread:420 [datastore.py:open_for_write():77] open: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/run-3qaz872i.wandb
+2022-02-02 10:40:40,976 DEBUG   SenderThread:420 [sender.py:send():235] send: run
+2022-02-02 10:40:41,245 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: run_start
+2022-02-02 10:40:41,973 INFO    SenderThread:420 [dir_watcher.py:__init__():169] watching files in: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files
+2022-02-02 10:40:41,974 INFO    SenderThread:420 [sender.py:_start_run_threads():812] run started: 3qaz872i with start time 1643798436
+2022-02-02 10:40:41,974 DEBUG   SenderThread:420 [sender.py:send():235] send: summary
+2022-02-02 10:40:41,980 INFO    SenderThread:420 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-02-02 10:40:42,959 INFO    Thread-8  :420 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-summary.json
+2022-02-02 10:40:47,021 INFO    Thread-8  :420 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:40:47,368 DEBUG   HandlerThread:420 [meta.py:__init__():36] meta init
+2022-02-02 10:40:47,371 DEBUG   HandlerThread:420 [meta.py:__init__():50] meta init done
+2022-02-02 10:40:47,372 DEBUG   HandlerThread:420 [meta.py:probe():210] probe
+2022-02-02 10:40:47,379 DEBUG   HandlerThread:420 [meta.py:_setup_git():200] setup git
+2022-02-02 10:40:47,506 DEBUG   HandlerThread:420 [meta.py:_setup_git():207] setup git done
+2022-02-02 10:40:47,506 DEBUG   HandlerThread:420 [meta.py:_save_pip():54] save pip
+2022-02-02 10:40:47,512 DEBUG   HandlerThread:420 [meta.py:_save_pip():68] save pip done
+2022-02-02 10:40:47,513 DEBUG   HandlerThread:420 [meta.py:probe():248] probe done
+2022-02-02 10:40:47,532 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: stop_status
+2022-02-02 10:40:47,532 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: stop_status
+2022-02-02 10:40:47,599 DEBUG   SenderThread:420 [sender.py:send():235] send: run
+2022-02-02 10:40:47,751 INFO    SenderThread:420 [sender.py:send_run():707] updated run: 3qaz872i
+2022-02-02 10:40:47,752 DEBUG   SenderThread:420 [sender.py:send():235] send: files
+2022-02-02 10:40:47,752 INFO    SenderThread:420 [sender.py:_save_file():944] saving file wandb-metadata.json with policy now
+2022-02-02 10:40:48,024 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/config.yaml
+2022-02-02 10:40:48,025 INFO    Thread-8  :420 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/requirements.txt
+2022-02-02 10:40:48,026 INFO    Thread-8  :420 [dir_watcher.py:_on_file_created():217] file/dir created: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-metadata.json
+2022-02-02 10:40:48,123 INFO    Thread-12 :420 [upload_job.py:push():137] Uploaded file /tmp/tmp_s789mnjwandb/2iblbrnu-wandb-metadata.json
+2022-02-02 10:40:54,154 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:54,158 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:54,160 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:54,161 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:54,162 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:54,163 DEBUG   SenderThread:420 [sender.py:send():235] send: config
+2022-02-02 10:40:55,052 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:02,602 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: stop_status
+2022-02-02 10:41:02,603 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: stop_status
+2022-02-02 10:41:03,073 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:05,078 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:07,083 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:09,087 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:11,096 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:12,098 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/config.yaml
+2022-02-02 10:41:15,109 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:15,447 DEBUG   SenderThread:420 [sender.py:send():235] send: stats
+2022-02-02 10:41:17,684 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: stop_status
+2022-02-02 10:41:17,685 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: stop_status
+2022-02-02 10:41:32,737 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: stop_status
+2022-02-02 10:41:32,738 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: stop_status
+2022-02-02 10:41:43,181 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:43,539 DEBUG   SenderThread:420 [sender.py:send():235] send: telemetry
+2022-02-02 10:41:43,540 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:43,540 DEBUG   SenderThread:420 [sender.py:send():235] send: exit
+2022-02-02 10:41:43,540 INFO    SenderThread:420 [sender.py:send_exit():371] handling exit code: 1
+2022-02-02 10:41:43,541 INFO    SenderThread:420 [sender.py:send_exit():373] handling runtime: 62
+2022-02-02 10:41:43,545 INFO    SenderThread:420 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-02-02 10:41:43,547 INFO    SenderThread:420 [sender.py:send_exit():379] send defer
+2022-02-02 10:41:43,547 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:43,548 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:43,548 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 0
+2022-02-02 10:41:43,549 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:43,549 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 0
+2022-02-02 10:41:43,549 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 1
+2022-02-02 10:41:43,550 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:43,550 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 1
+2022-02-02 10:41:44,184 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:44,185 INFO    Thread-8  :420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-summary.json
+2022-02-02 10:41:44,918 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:44,918 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:44,919 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 1
+2022-02-02 10:41:44,919 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 2
+2022-02-02 10:41:44,919 DEBUG   SenderThread:420 [sender.py:send():235] send: stats
+2022-02-02 10:41:44,920 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:44,919 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:44,921 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 2
+2022-02-02 10:41:44,922 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:44,922 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 2
+2022-02-02 10:41:44,922 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 3
+2022-02-02 10:41:44,923 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:44,923 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 3
+2022-02-02 10:41:44,923 DEBUG   SenderThread:420 [sender.py:send():235] send: summary
+2022-02-02 10:41:44,927 INFO    SenderThread:420 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-02-02 10:41:44,929 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:44,929 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 3
+2022-02-02 10:41:44,930 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 4
+2022-02-02 10:41:44,930 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:44,930 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 4
+2022-02-02 10:41:44,931 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:44,931 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 4
+2022-02-02 10:41:45,014 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 5
+2022-02-02 10:41:45,015 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:45,015 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 5
+2022-02-02 10:41:45,016 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:45,016 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 5
+2022-02-02 10:41:45,016 INFO    SenderThread:420 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-02-02 10:41:45,022 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,189 INFO    SenderThread:420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/config.yaml
+2022-02-02 10:41:45,190 INFO    SenderThread:420 [dir_watcher.py:_on_file_modified():230] file/dir modified: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-summary.json
+2022-02-02 10:41:45,190 INFO    SenderThread:420 [dir_watcher.py:finish():313] scan: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files
+2022-02-02 10:41:45,191 INFO    SenderThread:420 [dir_watcher.py:finish():327] scan save: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/config.yaml config.yaml
+2022-02-02 10:41:45,200 INFO    SenderThread:420 [dir_watcher.py:finish():327] scan save: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-summary.json wandb-summary.json
+2022-02-02 10:41:45,204 INFO    SenderThread:420 [dir_watcher.py:finish():327] scan save: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log output.log
+2022-02-02 10:41:45,205 INFO    SenderThread:420 [dir_watcher.py:finish():327] scan save: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/requirements.txt requirements.txt
+2022-02-02 10:41:45,207 INFO    SenderThread:420 [dir_watcher.py:finish():327] scan save: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-metadata.json wandb-metadata.json
+2022-02-02 10:41:45,208 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 6
+2022-02-02 10:41:45,214 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,214 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:45,219 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 6
+2022-02-02 10:41:45,221 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:45,222 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 6
+2022-02-02 10:41:45,222 INFO    SenderThread:420 [file_pusher.py:finish():177] shutting down file pusher
+2022-02-02 10:41:45,320 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,324 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,427 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,427 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,513 INFO    Thread-16 :420 [upload_job.py:push():137] Uploaded file /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/requirements.txt
+2022-02-02 10:41:45,513 INFO    Thread-15 :420 [upload_job.py:push():137] Uploaded file /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/output.log
+2022-02-02 10:41:45,513 INFO    Thread-13 :420 [upload_job.py:push():137] Uploaded file /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/config.yaml
+2022-02-02 10:41:45,514 INFO    Thread-14 :420 [upload_job.py:push():137] Uploaded file /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/files/wandb-summary.json
+2022-02-02 10:41:45,530 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,530 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,633 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,633 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,715 INFO    Thread-7  :420 [sender.py:transition_state():392] send defer: 7
+2022-02-02 10:41:45,716 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:45,716 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 7
+2022-02-02 10:41:45,717 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:45,717 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 7
+2022-02-02 10:41:45,736 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,822 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 8
+2022-02-02 10:41:45,822 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,823 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:45,824 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 8
+2022-02-02 10:41:45,825 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:45,825 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 8
+2022-02-02 10:41:45,825 INFO    SenderThread:420 [sender.py:transition_state():392] send defer: 9
+2022-02-02 10:41:45,826 DEBUG   SenderThread:420 [sender.py:send():235] send: final
+2022-02-02 10:41:45,826 DEBUG   SenderThread:420 [sender.py:send():235] send: footer
+2022-02-02 10:41:45,826 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: defer
+2022-02-02 10:41:45,827 INFO    HandlerThread:420 [handler.py:handle_request_defer():154] handle defer: 9
+2022-02-02 10:41:45,827 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: defer
+2022-02-02 10:41:45,827 INFO    SenderThread:420 [sender.py:send_request_defer():388] handle sender defer: 9
+2022-02-02 10:41:45,926 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: poll_exit
+2022-02-02 10:41:45,926 DEBUG   SenderThread:420 [sender.py:send_request():249] send_request: poll_exit
+2022-02-02 10:41:45,927 INFO    SenderThread:420 [file_pusher.py:join():182] waiting for file pusher
+2022-02-02 10:41:46,006 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: get_summary
+2022-02-02 10:41:46,007 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: sampled_history
+2022-02-02 10:41:46,008 DEBUG   HandlerThread:420 [handler.py:handle_request():131] handle_request: shutdown
+2022-02-02 10:41:46,009 INFO    HandlerThread:420 [handler.py:finish():739] shutting down handler
+2022-02-02 10:41:46,826 INFO    WriterThread:420 [datastore.py:close():281] close: /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220202_104035-3qaz872i/run-3qaz872i.wandb
+2022-02-02 10:41:47,006 INFO    SenderThread:420 [sender.py:finish():1075] shutting down sender
+2022-02-02 10:41:47,006 INFO    SenderThread:420 [file_pusher.py:finish():177] shutting down file pusher
+2022-02-02 10:41:47,007 INFO    SenderThread:420 [file_pusher.py:join():182] waiting for file pusher
+2022-02-02 10:41:47,010 INFO    MainThread:420 [internal.py:handle_exit():79] Internal process exited

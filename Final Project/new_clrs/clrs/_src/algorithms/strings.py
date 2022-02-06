@@ -320,12 +320,12 @@ def get_predecessor(T, P):
   predecessor = np.eye(nb_pattern + nb_text)
 
   for i in range(1,nb_text):
-    #predecessor[i-1,i] = 1
-    predecessor[i,i-1] = 1
+    predecessor[i-1,i] = 1
+    #predecessor[i,i-1] = 1
   
   for j in range(1 + nb_text, nb_pattern + nb_text):
-    #predecessor[j-1, j] = 1
-    predecessor[j, j-1] = 1
+    predecessor[j-1, j] = 1
+    #predecessor[j, j-1] = 1
   
   return predecessor
 
@@ -427,8 +427,8 @@ def naive_string_matcher(T: _Array, P: _Array) -> _Out:
             'j': probing.mask_one(T.shape[0] + j, T.shape[0] + P.shape[0]),
             'advance': int(T[i] != P[j]),
             ## equal: one - not equal: 0
-            'advance_i':int(T[i] != P[j]), # advance i if they are not equal
-            'advance_j':int(T[i] != P[j]), # advance j if they are not equal
+            'advance_i':int(T[i] == P[j]), # advance i if they are not equal
+            'advance_j':int(T[i] == P[j]), # advance j if they are not equal
             'advance_s':int(T[i] != P[j]), # advacne s if they are not equal
             'i_j_mat': i_j_mat,
             #'adj2':adj2
@@ -442,8 +442,7 @@ def naive_string_matcher(T: _Array, P: _Array) -> _Out:
         probing.push(
             probes,
             specs.Stage.OUTPUT,
-            next_probe={'match': 0,
-            #probing.mask_one(s, T.shape[0] + P.shape[0])
+            next_probe={'match': probing.mask_one(s, T.shape[0] + P.shape[0])
             })
         probing.finalize(probes)
         #debug
@@ -473,8 +472,8 @@ def naive_string_matcher(T: _Array, P: _Array) -> _Out:
                 'j': probing.mask_one(T.shape[0] + j, T.shape[0] + P.shape[0]),
                 'advance':int(T[i] != P[j]),
                 ## equal: one - not equal: 0
-                'advance_i':int(T[i] != P[j]), # advance i if they are not equal
-                'advance_j':int(T[i] != P[j]), # advance j if they are not equal
+                'advance_i':int(T[i] == P[j]), # advance i if they are not equal
+                'advance_j':int(T[i] == P[j]), # advance j if they are not equal
                 'advance_s':int(T[i] != P[j]), # advacne s if they are not equal
                 'i_j_mat': i_j_mat,
                 #'adj2':adj2

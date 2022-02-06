@@ -1,0 +1,140 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0203 22:26:06.776336 140149173614464 run.py:118] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 1}, 'val': {'num_samples': 32, 'length': 64, 'seed': 2}, 'test': {'num_samples': 32, 'length': 64, 'seed': 3}}
+manual >>  True
+I0203 22:26:11.024564 140149173614464 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-02-03 22:26:11.036864: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0203 22:26:11.037227 140149173614464 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0203 22:26:11.038274 140149173614464 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0203 22:26:11.038770 140149173614464 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 20, 20)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 20)
+I0203 22:26:45.875108 140149173614464 run.py:194] Compiled feedback step in 34.854857 s.
+I0203 22:26:53.591636 140149173614464 run.py:207] (train) step 0: {'average_accuracy': 0.5052411589635855, 'average_shift': 3.8125}
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 80, 80)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 80, 80)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+I0203 22:27:15.163971 140149173614464 run.py:214] (val) step 0: {'average_accuracy': 0.55452266300338, 'average_shift': 19.65625}
+I0203 22:27:15.164243 140149173614464 run.py:220] Saving new checkpoint for average accuracy...
+I0203 22:27:15.170671 140149173614464 run.py:225] Saving new checkpoint for average shift...
+I0203 22:27:24.908791 140149173614464 run.py:207] (train) step 10: {'average_accuracy': 0.4962221805971805, 'average_shift': 3.4375}
+I0203 22:27:26.597298 140149173614464 run.py:214] (val) step 10: {'average_accuracy': 0.5049291746985551, 'average_shift': 13.875}
+I0203 22:27:26.600238 140149173614464 run.py:225] Saving new checkpoint for average shift...
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 80, 80)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+manual >>  True
+mid size >>  32
+out size >>  32
+adj shape >>  (32, 80, 80)
+max
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+inside max_i_j line: [734] baseline_2.py
+prev_hint shape >>  (32, 80)
+I0203 22:27:35.539805 140149173614464 run.py:256] Restoring best average accuracy model from checkpoint...
+I0203 22:27:59.317625 140149173614464 run.py:262] (test) step 19: {'average_accuracy': 0.5560287748045017, 'average_shift': 17.375, 'final test accuracy': 0.03125}
+I0203 22:27:59.318372 140149173614464 run.py:266] Restoring best average shift model from checkpoint...
+I0203 22:28:01.008273 140149173614464 run.py:271] (test) step 19: {'average_accuracy': 0.5384781962684926, 'average_shift': 11.5625, 'final test accuracy': 0.0}

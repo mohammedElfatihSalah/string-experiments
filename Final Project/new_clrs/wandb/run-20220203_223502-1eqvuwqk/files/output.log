@@ -1,0 +1,172 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+I0203 22:35:08.003821 140020712081280 run.py:118] Using CLRS21 spec: {'train': {'num_samples': 1000, 'length': 16, 'seed': 1}, 'val': {'num_samples': 32, 'length': 64, 'seed': 2}, 'test': {'num_samples': 32, 'length': 64, 'seed': 3}}
+manual >>  True
+I0203 22:35:12.543460 140020712081280 xla_bridge.py:231] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+2022-02-03 22:35:12.555734: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+I0203 22:35:12.556012 140020712081280 xla_bridge.py:231] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0203 22:35:12.556761 140020712081280 xla_bridge.py:231] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0203 22:35:12.556932 140020712081280 xla_bridge.py:235] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+adj shape >>  (32, 20, 20)
+manual >>  True
+adj shape >>  (32, 20, 20)
+manual >>  True
+adj shape >>  (32, 20, 20)
+manual >>  True
+adj shape >>  (32, 20, 20)
+manual >>  True
+adj shape >>  (32, 20, 20)
+I0203 22:35:47.890771 140020712081280 run.py:195] Compiled feedback step in 35.351110 s.
+manual >>  True
+adj shape >>  (32, 20, 20)
+manual >>  True
+adj shape >>  (32, 20, 20)
+I0203 22:35:55.023450 140020712081280 run.py:208] (train) step 0: {'average_accuracy': 0.5154836789027966, 'average_shift': 4.0}
+manual >>  True
+adj shape >>  (32, 80, 80)
+manual >>  True
+adj shape >>  (32, 80, 80)
+I0203 22:36:16.278906 140020712081280 run.py:215] (val) step 0: {'average_accuracy': 0.5504727301055296, 'average_shift': 20.96875}
+I0203 22:36:16.279829 140020712081280 run.py:221] Saving new checkpoint for average accuracy...
+I0203 22:36:16.285259 140020712081280 run.py:226] Saving new checkpoint for average shift...
+I0203 22:36:25.891513 140020712081280 run.py:208] (train) step 10: {'average_accuracy': 0.4799938938931296, 'average_shift': 2.28125}
+I0203 22:36:27.503512 140020712081280 run.py:215] (val) step 10: {'average_accuracy': 0.5193362345832775, 'average_shift': 10.125}
+I0203 22:36:27.503772 140020712081280 run.py:226] Saving new checkpoint for average shift...
+called predict2
+manual >>  False
+adj shape >>  (32, 80, 80)
+manual >>  False
+I0203 22:36:36.228857 140020712081280 run.py:257] Restoring best average accuracy model from checkpoint...
+Traceback (most recent call last):
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 303, in <module>
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 287, in main
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 262, in test_model_custom
+    wandb.log({'test_accuracy': test_stats['match'], 'average accuracy': a, 'average shift':s,})
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 160, in evaluate
+    out.update(clrs.evaluate(feedback, predictions))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 975, in predict2
+    self.params, features, True, False)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/api.py", line 419, in cache_miss
+    donated_invars=donated_invars, inline=inline)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1632, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1623, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 1635, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/core.py", line 627, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 688, in _xla_call_impl
+    *unsafe_map(arg_spec, args))
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 263, in memoized_fun
+    ans = call(fun, *args)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 760, in _xla_callable_uncached
+    *arg_specs).compile().unsafe_call
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/xla.py", line 772, in lower_xla_callable
+    fun, abstract_args, pe.debug_info_final(fun, "jit"))
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1542, in trace_to_jaxpr_final
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(fun, main, in_avals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1520, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 216, in apply_fn
+    return f.apply(params, None, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 127, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 383, in apply_fn
+    out = f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 949, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 374, in __call__
+    length=nb_mp_steps - 1)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 509, in scan
+    stateful_fun, init, xs, length, reverse, unroll=unroll)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 1345, in scan
+    init_flat, carry_avals, carry_avals_out, init_tree, *rest = _create_jaxpr(init)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 1332, in _create_jaxpr
+    f, in_tree, carry_avals + x_avals, "scan")
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 78, in _initial_style_jaxpr
+    fun, in_tree, in_avals, primitive_name)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 187, in wrapper
+    return cached(config._trace_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/util.py", line 180, in cached
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/jax/_src/lax/control_flow.py", line 71, in _initial_style_open_jaxpr
+    jaxpr, _, consts = pe.trace_to_jaxpr_dynamic(wrapped_fun, in_avals, debug)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1510, in trace_to_jaxpr_dynamic
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(fun, main, in_avals)
+  File "/usr/local/lib/python3.7/dist-packages/jax/interpreters/partial_eval.py", line 1520, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers)
+  File "/usr/local/lib/python3.7/dist-packages/jax/linear_util.py", line 166, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 491, in stateful_fun
+    carry, out = f(carry, x)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 223, in _msg_passing_step
+    prev_hint_.s = decoded_hint['s']
+jax._src.traceback_util.UnfilteredStackTrace: KeyError: 's'
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+--------------------
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 303, in <module>
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/usr/local/lib/python3.7/dist-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 287, in main
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 262, in test_model_custom
+    wandb.log({'test_accuracy': test_stats['match'], 'average accuracy': a, 'average shift':s,})
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/examples/run.py", line 160, in evaluate
+    out.update(clrs.evaluate(feedback, predictions))
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 975, in predict2
+    self.params, features, True, False)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 216, in apply_fn
+    return f.apply(params, None, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 127, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/transform.py", line 383, in apply_fn
+    out = f(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 949, in _use_net
+    kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 374, in __call__
+    length=nb_mp_steps - 1)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 509, in scan
+    stateful_fun, init, xs, length, reverse, unroll=unroll)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/stateful.py", line 491, in stateful_fun
+    carry, out = f(carry, x)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 428, in wrapped
+    out = f(*args, **kwargs)
+  File "/usr/local/lib/python3.7/dist-packages/haiku/_src/module.py", line 279, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/content/drive/MyDrive/Final Project/new_clrs/clrs/_src/baselines_2.py", line 223, in _msg_passing_step
+    prev_hint_.s = decoded_hint['s']
+KeyError: 's'

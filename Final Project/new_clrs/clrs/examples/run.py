@@ -20,9 +20,7 @@ import logging as lg
 from absl import app
 from absl import flags
 from absl import logging
-
 import numpy as np
-
 import clrs
 
 
@@ -30,11 +28,11 @@ flags.DEFINE_string('algorithm', 'naive_string_matcher', 'Which algorithm to run
 flags.DEFINE_integer('seed', 42, 'Random seed to set')
 
 flags.DEFINE_integer('batch_size',32, 'Batch size used for training.')
-flags.DEFINE_integer('train_steps', 30000, 'Number of training steps.')
+flags.DEFINE_integer('train_steps',13000, 'Number of training steps.')
 flags.DEFINE_integer('log_every', 10, 'Logging frequency.')
 flags.DEFINE_boolean('verbose_logging', False, 'Whether to log aux losses.')
 
-flags.DEFINE_integer('hidden_size', 4,
+flags.DEFINE_integer('hidden_size', 32,
                    'Number of hidden size units of the model.')
 # changed .003 -> .0003
 flags.DEFINE_float('learning_rate', 0.003, 'Learning rate to use.')
@@ -90,6 +88,7 @@ def compute_average_metric(feedback, aux, hint_name):
   preds_idx = gt_idx - 1
   accuracy = 0
   avg_shift = 0
+  final_accu = 0
 
   #print("hint len >> ", hint_len)
   for i in range(bs):
@@ -100,10 +99,12 @@ def compute_average_metric(feedback, aux, hint_name):
     nb_shift_pred = np.sum((sample_pred > 0.0))
     nb_shift_gt   = np.sum(sample_gt)
     avg_shift += np.abs(nb_shift_gt - nb_shift_pred)
+    final_accu += int(nb_shift_pred == nb_shift_gt)
   
   accuracy /= bs
   avg_shift /= bs
-  return accuracy, avg_shift
+  final_accu/=bs
+  return accuracy, avg_shift, final_accu
 
 def main(unused_argv):
   run_name = input("Enter a name for your run >> ")
@@ -122,7 +123,7 @@ def main(unused_argv):
 
   val_sampler, _ = clrs.clrs21_val(FLAGS.algorithm)
 
-  model = clrs.models.BaselineModel(
+  model = clrs.models.BaselineModel2(
       spec=spec,
       hidden_dim=FLAGS.hidden_size,
       encode_hints=FLAGS.encode_hints,
@@ -133,7 +134,8 @@ def main(unused_argv):
       checkpoint_path=FLAGS.checkpoint_path,
       freeze_processor=FLAGS.freeze_processor,
       dummy_trajectory=train_sampler.next(FLAGS.batch_size),
-      #pooling ='max_i_j'
+     
+      pooling ='max_i_j'
   )
 
   # log hyperparameters
@@ -145,11 +147,16 @@ def main(unused_argv):
   config.batch_size = FLAGS.batch_size
   config.algorithm = FLAGS.algorithm
 
-  def evaluate(step, model, feedback, extras=None, verbose=False):
+  def evaluate(step, model, feedback, extras=None, verbose=False, test=False):
     """Evaluates a model on feedback."""
     examples_per_step = len(feedback.features.lengths)
     out = {'step': step, 'examples_seen': step * examples_per_step}
-    predictions, aux = model.predict(feedback.features)
+    if not test:
+      predictions, aux = model.predict(feedback.features)
+    else:
+      print("called predict2")
+      predictions, aux = model.predict2(feedback.features)
+
     out.update(clrs.evaluate(feedback, predictions))
     if extras:
       out.update(extras)
@@ -162,8 +169,8 @@ def main(unused_argv):
       except AttributeError:
         return v
     
-    accuracy, shift = compute_average_metric(feedback, aux, 'advance')
-    return {k: unpack(v) for k, v in out.items()}, accuracy, shift 
+    accuracy, shift, final = compute_average_metric(feedback, aux, 'advance_s')
+    return {k: unpack(v) for k, v in out.items()}, accuracy, shift, final
 
   # Training loop.
   best_score = 0.
@@ -188,32 +195,49 @@ def main(unused_argv):
     # Periodically evaluate model.
     if step % FLAGS.log_every == 0:
       # Training info.
-      train_stats, accuracy, shift = evaluate(
+      train_stats, accuracy, shift, final = evaluate(
           step,
           model,
           feedback,
           extras={'loss': cur_loss},
           verbose=FLAGS.verbose_logging,
+          test=False
       )
-      wandb.log({'train loss':train_stats['loss'], 'train match':train_stats['match'],'s_g_average':accuracy, 'average_shift':shift}, )
+      wandb.log({'train loss':train_stats['loss'], 'train match':train_stats['match'],'s_g_average':accuracy, 'average_shift':shift, "final train accuracy":final}, )
       logging.info('(train) step %d: %s', step, {'average_accuracy':accuracy, 'average_shift':shift})
 
       # Validation info.
       val_feedback = val_sampler.next()  # full-batch
-      val_stats, accuracy, shift = evaluate(
-          step, model, val_feedback, verbose=FLAGS.verbose_logging)
-      wandb.log({'validation match':val_stats['match'],'s_g_average_val':accuracy, 'average_shift_val': shift})
+      val_stats, accuracy, shift, final = evaluate(
+          step, model, val_feedback, verbose=FLAGS.verbose_logging, test=False)
+      wandb.log({'validation match':val_stats['match'],'s_g_average_val':accuracy, 'average_shift_val': shift, 'final validation accuracy':final})
       logging.info('(val) step %d: %s', step, {'average_accuracy':accuracy, 'average_shift':shift,})
 
+      if step % 50 == 0:
+        val_feedback = val_sampler.next()
+        val_stats, accuracy, shift, final = evaluate(
+          step, model, val_feedback, verbose=FLAGS.verbose_logging, test=True)
+        wandb.log({'validation match [manual]':val_stats['match'],'s_g_average_val [manual]':accuracy, 'average_shift_val': shift, 'final validation accuracy [manual]':final})
+      
+      if step % 100 == 0:
+        test_sampler, _ = clrs.clrs21_test(FLAGS.algorithm)
+        test_feedback = test_sampler.next()
+        test_stats, _, _, final = evaluate(
+          step, model, test_feedback, verbose=FLAGS.verbose_logging, test=True)
+        wandb.log({
+          'validation final accuracy [manual]': final
+        })
+
+      
       # If best scores, update checkpoint.
 
       def checkpoint_model_custom(model, best_average_accuracy, best_average_shift, average_accuracy, average_shift):
-        if average_accuracy > best_average_accuracy:
+        if average_accuracy >= best_average_accuracy:
           logging.info('Saving new checkpoint for average accuracy...')
           best_average_accuracy = average_accuracy
           model.save_model('best_average_accuracy.pkl')
         
-        if average_shift < best_average_shift:
+        if average_shift <= best_average_shift:
           logging.info('Saving new checkpoint for average shift...')
           best_average_shift = average_shift
           model.save_model('best_average_shift.pkl')
@@ -233,7 +257,7 @@ def main(unused_argv):
         model,
         best_average_accuracy, 
         best_average_shift,
-        accuracy,
+        val_stats['match'],# changed from accuracy to match
         shift
       )
 
@@ -249,19 +273,19 @@ def main(unused_argv):
     model.restore_model('best_average_accuracy.pkl', only_load_processor=False)
 
     test_feedback = test_sampler.next()  # full-batch
-    test_stats, a, s = evaluate(
-        step, model, test_feedback, verbose=FLAGS.verbose_logging)
-    logging.info('(test) step %d: %s', step, {'average_accuracy':a, 'average_shift':s,})
-    wandb.log({'test_accuracy': test_stats['match'], 'average accuracy': a, 'average shift':s,})
+    test_stats, a, s, f = evaluate(
+        step, model, test_feedback, verbose=FLAGS.verbose_logging, test=False)
+    logging.info('(test) step %d: %s', step, {'average_accuracy':a, 'average_shift':s,"final test accuracy":f})
+    wandb.log({'test_accuracy': test_stats['match'], 'test average accuracy': a, 'test average shift':s,})
 
 
     logging.info('Restoring best average shift model from checkpoint...')
     model.restore_model('best_average_shift.pkl', only_load_processor=False)
     test_feedback = test_sampler.next()  # full-batch
-    test_stats, a, s = evaluate(
-        step, model, test_feedback, verbose=FLAGS.verbose_logging)
-    logging.info('(test) step %d: %s', step, {'average_accuracy':a, 'average_shift':s,})
-    wandb.log({'test_accuracy': test_stats['match'], 'average accuracy': a, 'average shift':s,})
+    test_stats, a, s, f = evaluate(
+        step, model, test_feedback, verbose=FLAGS.verbose_logging, test=False)
+    logging.info('(test) step %d: %s', step, {'average_accuracy':a, 'average_shift':s,'final test accuracy':f})
+    wandb.log({'test_accuracy': test_stats['match'], 'test average accuracy': a, 'test average shift':s,})
 
     
   def test_model_default(model):
@@ -271,7 +295,7 @@ def main(unused_argv):
 
     test_feedback = test_sampler.next()  # full-batch
     test_stats, a, s = evaluate(
-        step, model, test_feedback, verbose=FLAGS.verbose_logging)
+        step, model, test_feedback, verbose=FLAGS.verbose_logging, test=True)
     logging.info('(test) step %d: %s', step, test_stats)
     wandb.log({'test_accuracy': test_stats['match'], 'average accuracy': a, 'average shift':s,})
   

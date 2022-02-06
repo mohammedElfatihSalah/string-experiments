@@ -42,17 +42,17 @@ CLRS21 = types.MappingProxyType({
     'train': {
         'num_samples': 1000,
         'length': 16,
-        'seed': 5,
+        'seed': 11,
     },
     'val': {
         'num_samples': 32,
         'length': 16,
-        'seed': 34,
+        'seed': 21,
     },
     'test': {
         'num_samples': 32,
         'length': 64,
-        'seed': 41,
+        'seed': 31,
     },
 })
 

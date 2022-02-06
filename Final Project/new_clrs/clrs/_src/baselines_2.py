@@ -108,7 +108,7 @@ class Net2(hk.Module):
     self.nb_dims = nb_dims
     self.pooling = pooling
 
-  def next_hint_byforce(self, advance , prev_hint_, nb_nodes):
+  def next_hint_byforce(self, advance_s, advance_i, advance_j , prev_hint_, nb_nodes):
     _advance = None
 
     prev_s = prev_hint_.s
@@ -139,7 +139,7 @@ class Net2(hk.Module):
     # s shape (batch_size, nb_nodes)
     idx = jnp.argmax(prev_s, axis=-1) + 1
     idx = hk.one_hot(idx, nb_nodes)
-    new_s = jnp.where(advance[:,None] == 1, idx, prev_s)
+    new_s = jnp.where(advance_s[:,None] == 1, idx, prev_s)
 
     # updating "i" according to "advance" value
     # i is advanced by one step if corresponding "advancd" is zero
@@ -147,20 +147,18 @@ class Net2(hk.Module):
     # i shape (batch_size, nb_nodes)
     idx = jnp.argmax(prev_i, axis=-1) + 1
     idx = hk.one_hot(idx, nb_nodes)
-    new_i = jnp.where(advance[:,None] != 1, idx, new_s)
+    new_i = jnp.where(advance_i[:,None] == 1, idx, new_s)
 
     # updating "j" according to "advance" value
     # j is advanced if the corresponding "advance" is zero
     # otherwise it's reset to the starting of the pattern
     # j shape (batch_size, nb_nodes)
-
-    print("start of pattern >> ", 4* nb_nodes // 5 )
     idx = jnp.argmax(prev_j, axis=-1) + 1
     idx = hk.one_hot(idx, nb_nodes)
     start_of_pattern_idx = 4* nb_nodes // 5
     reset_j = np.zeros((bs, nb_nodes))
     reset_j[:, start_of_pattern_idx] = 1
-    new_j = jnp.where(advance[:,None] != 1, idx, reset_j)
+    new_j = jnp.where(advance_j[:,None] == 1, idx, reset_j)
 
     prev_hint_.s = new_s
     prev_hint_.i = new_i
@@ -188,6 +186,7 @@ class Net2(hk.Module):
                         nb_nodes: int,
                         inputs: _Trajectory,
                         pooling:str,
+                        manual:bool, # added this
                         first_step: bool = False,
                         ):
     prev_hint_ = mp_state.prev_hint
@@ -195,26 +194,38 @@ class Net2(hk.Module):
 
     _advance = None
     #print("keys >> ", keys)
+    print("manual >> ", manual)
     if (not first_step) and repred and self.decode_hints:
-      decoded_hint = _decode_from_preds(self.spec, mp_state.hint_preds)
-      advance = decoded_hint['advance'].data
-      
-      prev_hint_, _ = self.next_hint_byforce(advance, prev_hint_, nb_nodes)
-      _advance   = self._next_advance(prev_hint_, keys)
+      if manual:
+        decoded_hint = _decode_from_preds(self.spec, mp_state.hint_preds)
+        advance_s = decoded_hint['advance_s'].data
+        advance_i = decoded_hint['advance_i'].data
+        advance_j = decoded_hint['advance_j'].data
+        
+        prev_hint_, _ = self.next_hint_byforce(advance_s,advance_i, advance_j, prev_hint_, nb_nodes)
+        _advance   = self._next_advance(prev_hint_, keys)
 
-      cur_hint = []
-      exp_hints = ['s', 'i', 'j']
-      for hint_name in exp_hints:
-        _, loc, typ = self.spec[hint_name]
-        cur_hint.append(
-            probing.DataPoint(
-                name=hint_name, location=loc, type_=typ, data=prev_hint_[hint_name]))
-     
+        cur_hint = []
+        exp_hints = ['s', 'i', 'j']
+        for hint_name in exp_hints:
+          _, loc, typ = self.spec[hint_name]
+          cur_hint.append(
+              probing.DataPoint(
+                  name=hint_name, location=loc, type_=typ, data=prev_hint_[hint_name]))
       
-      for hint in decoded_hint:
-        if hint in exp_hints:
-          continue
-        cur_hint.append(decoded_hint[hint])
+        
+        for hint in decoded_hint:
+          if hint in exp_hints:
+            continue
+          cur_hint.append(decoded_hint[hint])
+      else:
+        decoded_hint = _decode_from_preds(self.spec, mp_state.hint_preds)
+        prev_hint_.s = decoded_hint['s'].data
+        prev_hint_.i = decoded_hint['i'].data
+        prev_hint_.j = decoded_hint['j'].data
+        cur_hint = []
+        for hint in decoded_hint:
+          cur_hint.append(decoded_hint[hint])
     else:
       cur_hint = []
       for hint in hints:
@@ -301,7 +312,7 @@ class Net2(hk.Module):
     # the second value is the output that will be stacked over steps.
     return new_mp_state, new_mp_state
 
-  def __call__(self, features: _Features, repred: bool):
+  def __call__(self, features: _Features, repred: bool, manual:bool):
     """Network inference step."""
     inputs = features.inputs
     hints = features.hints
@@ -341,6 +352,7 @@ class Net2(hk.Module):
         inputs=inputs,
         nb_nodes=nb_nodes,
         lengths=lengths,
+        manual=manual,
         pooling=self.pooling)
 
     # Then scan through the rest.
@@ -352,6 +364,7 @@ class Net2(hk.Module):
         inputs=inputs,
         nb_nodes=nb_nodes,
         lengths=lengths,
+        manual=manual,
         pooling=self.pooling)
 
     _, output_mp_state = hk.scan(
@@ -729,10 +742,9 @@ class Net2(hk.Module):
     # decoding the hints 
     if self.decode_hints:
       for hint in hints:
-        if hint.name in ['s', 'i', 'j']:
-          continue
-
         decoders = self.dec_hint[hint.name]
+        # if hint.name in ['i', 'j', 's']:
+        #   continue
 
         if hint.location == _Location.NODE:
           if hint.type_ in [
@@ -789,8 +801,9 @@ class Net2(hk.Module):
             gr_emb = (gr_emb_i + gr_emb_j)/2
             gr_emb = gr_emb.squeeze(axis=1)
           elif pooling == 'max_i_j':
-            print("inside max_i_j line: [734] baseline_2.py")
-            print("prev_hint shape >> ", prev_hint.i.shape)
+            #print("inside max_i_j line: [734] baseline_2.py")
+            #print("prev_hint shape >> ", prev_hint.i.shape)
+            #print("hint i shape >> ", prev_hint.i.shape)
             gr_emb_i = jnp.matmul(jnp.expand_dims(prev_hint.i,axis=1), h_t)
             gr_emb_j = jnp.matmul(jnp.expand_dims(prev_hint.j,axis=1), h_t)
             gr_emb =  jnp.maximum(gr_emb_i, gr_emb_j)
@@ -800,7 +813,7 @@ class Net2(hk.Module):
             #print("baseline_2.py line [741] gr emb shape >> ", gr_emb.shape)
 
           pred_n = decoders[0](gr_emb)
-          #pred_g = decoders[1](graph_fts)
+          pred_g = decoders[1](graph_fts)
           pred = pred_n + pred_g
           #pred = gr_emb
           if hint.type_ in [
@@ -936,12 +949,12 @@ class BaselineModel2(model.Model):
                  kind, inf_bias, inf_bias_edge, self.nb_dims, pooling=self.pooling)(*args, **kwargs)
 
     self.net_fn = hk.without_apply_rng(hk.transform(_use_net))
-    self.net_fn_apply = jax.jit(self.net_fn.apply, static_argnums=2)
+    self.net_fn_apply = jax.jit(self.net_fn.apply, static_argnums=(2,3))
     self.params = None
     self.opt_state = None
 
   def init(self, features: _Features, seed: _Seed):
-    self.params = self.net_fn.init(jax.random.PRNGKey(seed), features, True)
+    self.params = self.net_fn.init(jax.random.PRNGKey(seed), features, True, True)
     self.opt_state = self.opt.init(self.params)
 
   def feedback(self, feedback: _Feedback) -> float:
@@ -954,9 +967,15 @@ class BaselineModel2(model.Model):
   def predict(self, features: _Features):
     """Model inference step."""
     outs, hint_preds, diff_logits, gt_diff = self.net_fn_apply(
-        self.params, features, True)
+        self.params, features, True, True)
     return _decode_from_preds(self.spec,
                               outs), (hint_preds, diff_logits, gt_diff)
+  def predict2(self, features:_Features):
+    outs, hint_preds, diff_logits, gt_diff = self.net_fn_apply(
+        self.params, features, True, False)
+    return _decode_from_preds(self.spec,
+                              outs), (hint_preds, diff_logits, gt_diff)
+
 
   def update(
       self,
@@ -968,7 +987,7 @@ class BaselineModel2(model.Model):
 
     def loss(params, feedback):
       (output_preds, hint_preds, diff_logits,
-       gt_diffs) = self.net_fn_apply(params, feedback.features, True)
+       gt_diffs) = self.net_fn_apply(params, feedback.features, True, True)
 
       # f = open("log.txt", "w")
       # f.write(str(hint_preds))
@@ -999,9 +1018,9 @@ class BaselineModel2(model.Model):
         #
         hint_losses = {} 
         for truth in feedback.features.hints:
-          if truth.name in ['s', 'i', 'j']:
-            continue
           #
+          # if truth.name in ['i','j','s']:
+          #   continue
           prev_loss = total_loss
           #print("truth data >> ", truth.data)
           for i in range(truth.data.shape[0] - 1):

@@ -1,0 +1,1 @@
+{"advance": 0.2521420121192932, "_runtime": 157, "_timestamp": 1643713794, "_step": 644, "train loss": 0.285574734210968, "train match": 1.0, "s_g_average": 0.6798161040348542, "average_shift": 1.53125, "validation match": 1.0, "s_g_average_val": 0.5274998028287502, "average_shift_val": 2.4375, "_wandb": {"runtime": 157}}

@@ -185,8 +185,8 @@ class MPNN(hk.Module):
 
     m_1 = hk.Linear(self.mid_size)
     m_2 = hk.Linear(self.mid_size)
-    print("mid size >> ", self.mid_size )
-    print("out size >> ", self.out_size)
+    #print("mid size >> ", self.mid_size )
+    #print("out size >> ", self.out_size)
     #m_e = hk.Linear(self.mid_size)
     #m_g = hk.Linear(self.mid_size)
 
@@ -213,11 +213,11 @@ class MPNN(hk.Module):
 
     print('adj shape >> ', adj.shape)
     if self.reduction == jnp.mean:
-      print('mean')
+      #print('mean')
       msgs = jnp.sum(msgs * jnp.expand_dims(adj, -1), axis=1)
       msgs = msgs / jnp.sum(adj, axis=-1, keepdims=True)
     else:
-      print('max')
+     # print('max')
       #print("msgs dim >> ", msgs.shape)
       #print("adj dim >> ", adj.shape)
       # axis 1 >> 2 

@@ -392,7 +392,7 @@ class Net(hk.Module):
     """Constructs processor."""
     if self.kind in ['deepsets', 'mpnn', 'pgn']:
       self.mpnn = processors.MPNN(
-          out_size=self.hidden_dim * 7,
+          out_size=self.hidden_dim,
           mid_act=jax.nn.relu,
           activation=jax.nn.relu,
           reduction=jnp.max,

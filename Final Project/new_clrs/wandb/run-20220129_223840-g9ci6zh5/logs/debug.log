@@ -1,0 +1,36 @@
+2022-01-29 22:38:40,544 INFO    MainThread:2709 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-29 22:38:40,544 INFO    MainThread:2709 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-29 22:38:40,545 INFO    MainThread:2709 [wandb_init.py:_log_setup():371] Logging user logs to /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220129_223840-g9ci6zh5/logs/debug.log
+2022-01-29 22:38:40,545 INFO    MainThread:2709 [wandb_init.py:_log_setup():372] Logging internal logs to /content/drive/MyDrive/Final Project/new_clrs/wandb/run-20220129_223840-g9ci6zh5/logs/debug-internal.log
+2022-01-29 22:38:40,545 INFO    MainThread:2709 [wandb_init.py:init():404] calling init triggers
+2022-01-29 22:38:40,546 INFO    MainThread:2709 [wandb_init.py:init():411] wandb.init called with sweep_config: {}
+config: {}
+2022-01-29 22:38:40,546 INFO    MainThread:2709 [wandb_init.py:init():460] starting backend
+2022-01-29 22:38:40,546 INFO    MainThread:2709 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-01-29 22:38:40,562 INFO    MainThread:2709 [backend.py:ensure_launched():216] starting backend process...
+2022-01-29 22:38:40,567 INFO    MainThread:2709 [backend.py:ensure_launched():222] started backend process with pid: 2732
+2022-01-29 22:38:40,569 INFO    MainThread:2709 [wandb_init.py:init():469] backend started and connected
+2022-01-29 22:38:40,571 INFO    MainThread:2709 [wandb_init.py:init():533] updated telemetry
+2022-01-29 22:38:45,859 INFO    MainThread:2709 [wandb_init.py:init():563] communicating current version
+2022-01-29 22:38:45,900 INFO    MainThread:2709 [wandb_init.py:init():568] got version response 
+2022-01-29 22:38:45,901 INFO    MainThread:2709 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2022-01-29 22:38:46,161 INFO    MainThread:2709 [wandb_init.py:init():606] starting run threads in backend
+2022-01-29 22:38:48,465 INFO    MainThread:2709 [wandb_run.py:_console_start():1810] atexit reg
+2022-01-29 22:38:48,490 INFO    MainThread:2709 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.REDIRECT
+2022-01-29 22:38:48,490 INFO    MainThread:2709 [wandb_run.py:_redirect():1689] Redirecting console.
+2022-01-29 22:38:48,492 INFO    MainThread:2709 [wandb_run.py:_redirect():1745] Redirects installed.
+2022-01-29 22:38:48,492 INFO    MainThread:2709 [wandb_init.py:init():633] run started, returning control to user process
+2022-01-29 22:38:48,568 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set learning_rate = 0.003 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,568 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb learning_rate 0.003 None
+2022-01-29 22:38:48,568 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set hidden_size = 4 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,569 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb hidden_size 4 None
+2022-01-29 22:38:48,569 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set processor_type = pgn - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,570 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb processor_type pgn None
+2022-01-29 22:38:48,570 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set freeze_processor = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,570 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb freeze_processor False None
+2022-01-29 22:38:48,571 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set batch_size = 32 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,571 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb batch_size 32 None
+2022-01-29 22:38:48,572 INFO    MainThread:2709 [wandb_config.py:__setitem__():144] config set algorithm = naive_string_matcher - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f356579e0d0>>
+2022-01-29 22:38:48,572 INFO    MainThread:2709 [wandb_run.py:_config_callback():956] config_cb algorithm naive_string_matcher None
+2022-01-30 00:45:13,786 INFO    MainThread:2709 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 1
+2022-01-30 00:45:13,787 INFO    MainThread:2709 [wandb_run.py:_restore():1752] restore
